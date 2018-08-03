@@ -1,0 +1,35 @@
+{
+  "name": "ascii-level-maker",
+  "version": "0.0.1",
+  "description": "Making creation of levels with ASCII arrays easier :)",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Godje/ascii-level-maker.git"
+  },
+  "keywords": [
+    "ascii",
+    "app"
+  ],
+  "author": "Daniel Mayovskiy",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Godje/ascii-level-maker/issues"
+  },
+  "homepage": "https://github.com/Godje/ascii-level-maker#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.24.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.1"
+  }
+}
