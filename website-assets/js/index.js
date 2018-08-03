@@ -1,2 +1,2 @@
-// concat order test
-console.log(m)
+const m = require("mithril");
+
