@@ -49,12 +49,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 29) / 58)
+let s:l = 13 - ((12 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-8
-normal! 011|
+13
+normal! 027|
 wincmd w
 argglobal
 if bufexists('./website-assets/js/index.js') | buffer ./website-assets/js/index.js | else | edit ./website-assets/js/index.js | endif
@@ -128,12 +128,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 12 - ((11 * winheight(0) + 19) / 38)
+let s:l = 21 - ((20 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-12
-normal! 016|
+21
+normal! 019|
 wincmd w
 argglobal
 if bufexists('website-assets/scss/styles.scss') | buffer website-assets/scss/styles.scss | else | edit website-assets/scss/styles.scss | endif
