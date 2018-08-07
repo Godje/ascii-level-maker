@@ -1,0 +1,14 @@
+@import "./vars.scss";
+
+.settings {
+	position: fixed;
+	width: $settings-width;
+	height: 100vh;
+	left: 100%;
+	top: 0;
+	display: block;
+	background-color: $settings-bgc;
+	&.open {
+		left: calc(100% - #{$settings-width})
+	}
+}

@@ -1,7 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&subset=cyrillic');
+@import "./vars.scss";
+@import "./settings.scss";
 
 * { box-sizing: border-box; }
 
 body {
 	margin: 0;
+	overflow: auto;
+	margin: 0;
+	height: 100vh;
+	width: 100vw;
+	position: relative;
+	display: block;
+	background-color: $main-bgc;
+	font-family: "Roboto", sans-serif;
+}
+
+.root {
+	position: relative;
+	display: inline-block;
+	overflow: auto;
+}
+
+.screen {
+	margin: 0;
+	overflow: auto;
+}
+
+.wrapper {
+	position: relative;
+	overflow: auto;
 }
