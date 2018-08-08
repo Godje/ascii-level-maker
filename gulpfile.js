@@ -39,6 +39,7 @@ gulp.task("js", function(){
 	return browserify(jsWatch)
 		.transform(babelify, { presets: ["env"] })
 		.bundle()
+		.on("error", skipError) // might be the wrong fix. If anything, delete this.
 		.pipe(source(jsWatch))
 		.pipe(streamify(uglify()))
 		.pipe(rename("client.min.js"))
