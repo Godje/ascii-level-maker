@@ -54,7 +54,7 @@ class Settings {
 				}),
 				m("input", {
 					type: "button",
-					onclick: this.restartCanvas,
+					onclick: this.applySettings,
 					value: "Apply"
 				})
 			])

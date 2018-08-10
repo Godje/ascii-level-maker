@@ -4,6 +4,7 @@ const MODEL = require("../model.js");
 
 class Tools {
 	constructor(vnode){
+		
 		return;
 	}
 	view(vnode){
