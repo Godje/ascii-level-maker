@@ -3,8 +3,7 @@ if &cp | set nocp | endif
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-silent tabonly
-cd /mnt/c/Users/Owner/Google\ Drive/PROJECTS/github/ascii-level-maker
+cd /media/daniel/therest/linux/github/ascii-level-maker
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -19,17 +18,14 @@ badd +3 website-assets/js/modules/Canvas.js
 badd +1 website-assets/scss/settings.scss
 badd +1 website-assets/scss/vars.scss
 badd +153 ~/.vimrc
-badd +0 package-lock.json
+badd +1 package-lock.json
 badd +5 package.json
-badd +4 website-assets/js/modules/Settings.js
-badd +0 website-assets/js/modules/Tools.js
+badd +1 website-assets/js/modules/Settings.js
+badd +1 website-assets/js/modules/Tools.js
 argglobal
 silent! argdel *
 $argadd index.html
 set stal=2
-tabnew
-tabnew
-tabnext -2
 edit website-assets/js/modules/Settings.js
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -43,15 +39,12 @@ wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe 'vert 1resize ' . ((&columns * 119 + 119) / 238)
-exe '2resize ' . ((&lines * 34 + 30) / 61)
-exe 'vert 2resize ' . ((&columns * 118 + 119) / 238)
-exe '3resize ' . ((&lines * 23 + 30) / 61)
-exe 'vert 3resize ' . ((&columns * 118 + 119) / 238)
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 115 + 115) / 230)
+exe '2resize ' . ((&lines * 26 + 30) / 60)
+exe 'vert 2resize ' . ((&columns * 114 + 115) / 230)
+exe '3resize ' . ((&lines * 30 + 30) / 60)
+exe 'vert 3resize ' . ((&columns * 114 + 115) / 230)
 argglobal
 setlocal fdm=syntax
 setlocal fde=0
@@ -77,13 +70,11 @@ normal! zo
 normal! zo
 55
 normal! zo
-61
-normal! zo
-let s:l = 55 - ((47 * winheight(0) + 29) / 58)
+let s:l = 56 - ((47 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-55
+56
 normal! 0
 wincmd w
 argglobal
@@ -100,7 +91,7 @@ setlocal fen
 normal! zo
 11
 normal! zo
-let s:l = 14 - ((13 * winheight(0) + 17) / 34)
+let s:l = 14 - ((13 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -119,28 +110,25 @@ setlocal fdn=20
 setlocal fen
 8
 normal! zo
-let s:l = 4 - ((2 * winheight(0) + 11) / 23)
+let s:l = 4 - ((3 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 4
-normal! 06|
+normal! 027|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 119 + 119) / 238)
-exe '2resize ' . ((&lines * 34 + 30) / 61)
-exe 'vert 2resize ' . ((&columns * 118 + 119) / 238)
-exe '3resize ' . ((&lines * 23 + 30) / 61)
-exe 'vert 3resize ' . ((&columns * 118 + 119) / 238)
-tabnext
-edit website-assets/js/modules/Tools.js
+3wincmd w
+exe 'vert 1resize ' . ((&columns * 115 + 115) / 230)
+exe '2resize ' . ((&lines * 26 + 30) / 60)
+exe 'vert 2resize ' . ((&columns * 114 + 115) / 230)
+exe '3resize ' . ((&lines * 30 + 30) / 60)
+exe 'vert 3resize ' . ((&columns * 114 + 115) / 230)
+tabedit website-assets/js/modules/Tools.js
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
 wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
 argglobal
 setlocal fdm=syntax
 setlocal fde=0
@@ -156,16 +144,13 @@ normal! zo
 normal! zo
 10
 normal! zo
-14
-normal! zo
-let s:l = 11 - ((10 * winheight(0) + 29) / 58)
+let s:l = 11 - ((10 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 11
 normal! 018|
-tabnext
-edit website-assets/scss/vars.scss
+tabedit website-assets/scss/vars.scss
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -178,15 +163,12 @@ wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe '1resize ' . ((&lines * 29 + 30) / 61)
-exe 'vert 1resize ' . ((&columns * 118 + 119) / 238)
-exe '2resize ' . ((&lines * 28 + 30) / 61)
-exe 'vert 2resize ' . ((&columns * 118 + 119) / 238)
-exe 'vert 3resize ' . ((&columns * 119 + 119) / 238)
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe '1resize ' . ((&lines * 23 + 30) / 60)
+exe 'vert 1resize ' . ((&columns * 114 + 115) / 230)
+exe '2resize ' . ((&lines * 33 + 30) / 60)
+exe 'vert 2resize ' . ((&columns * 114 + 115) / 230)
+exe 'vert 3resize ' . ((&columns * 115 + 115) / 230)
 argglobal
 setlocal fdm=syntax
 setlocal fde=0
@@ -196,7 +178,7 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 10 - ((9 * winheight(0) + 14) / 29)
+let s:l = 10 - ((7 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -214,7 +196,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 12 - ((1 * winheight(0) + 14) / 28)
+let s:l = 12 - ((1 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -232,22 +214,21 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 117 - ((28 * winheight(0) + 29) / 58)
+let s:l = 117 - ((28 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 117
 normal! 013|
 wincmd w
-3wincmd w
-exe '1resize ' . ((&lines * 29 + 30) / 61)
-exe 'vert 1resize ' . ((&columns * 118 + 119) / 238)
-exe '2resize ' . ((&lines * 28 + 30) / 61)
-exe 'vert 2resize ' . ((&columns * 118 + 119) / 238)
-exe 'vert 3resize ' . ((&columns * 119 + 119) / 238)
-tabnext 3
+exe '1resize ' . ((&lines * 23 + 30) / 60)
+exe 'vert 1resize ' . ((&columns * 114 + 115) / 230)
+exe '2resize ' . ((&lines * 33 + 30) / 60)
+exe 'vert 2resize ' . ((&columns * 114 + 115) / 230)
+exe 'vert 3resize ' . ((&columns * 115 + 115) / 230)
+tabnext 1
 set stal=1
-if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
+if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
