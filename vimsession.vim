@@ -8,12 +8,15 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 website-assets/js/model.js
-badd +0 website-assets/js/index.js
-badd +0 website-assets/js/modules/Settings.js
-badd +0 website-assets/scss/settings.scss
-badd +0 website-assets/scss/styles.scss
+badd +1 website-assets/js/model.js
+badd +1 website-assets/js/index.js
+badd +1 website-assets/js/modules/Settings.js
+badd +1 website-assets/scss/settings.scss
+badd +7 website-assets/scss/styles.scss
 badd +1 website-assets/scss/vars.scss
+badd +0 website-assets/js/modules/App.js
+badd +0 website-assets/js/modules/Tools.js
+badd +0 website-assets/scss/tools.scss
 argglobal
 silent! argdel *
 $argadd website-assets/js/model.js
@@ -32,11 +35,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 115 + 115) / 230)
-exe '2resize ' . ((&lines * 28 + 30) / 60)
-exe 'vert 2resize ' . ((&columns * 114 + 115) / 230)
-exe '3resize ' . ((&lines * 28 + 30) / 60)
-exe 'vert 3resize ' . ((&columns * 114 + 115) / 230)
+exe 'vert 1resize ' . ((&columns * 118 + 117) / 235)
+exe '2resize ' . ((&lines * 24 + 31) / 62)
+exe 'vert 2resize ' . ((&columns * 116 + 117) / 235)
+exe '3resize ' . ((&lines * 34 + 31) / 62)
+exe 'vert 3resize ' . ((&columns * 116 + 117) / 235)
 argglobal
 setlocal fdm=syntax
 setlocal fde=0
@@ -46,12 +49,44 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 4 - ((3 * winheight(0) + 28) / 57)
+16
+normal! zo
+17
+normal! zo
+18
+normal! zo
+19
+normal! zo
+19
+normal! zc
+43
+normal! zo
+47
+normal! zo
+49
+normal! zo
+51
+normal! zo
+49
+normal! zo
+51
+normal! zo
+51
+normal! zo
+54
+normal! zo
+54
+normal! zo
+56
+normal! zo
+59
+normal! zo
+let s:l = 49 - ((48 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 0
+49
+normal! 014|
 wincmd w
 argglobal
 if bufexists('website-assets/js/model.js') | buffer website-assets/js/model.js | else | edit website-assets/js/model.js | endif
@@ -65,15 +100,15 @@ setlocal fdn=20
 setlocal fen
 4
 normal! zo
-let s:l = 5 - ((2 * winheight(0) + 14) / 28)
+let s:l = 1 - ((0 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
+1
 normal! 0
 wincmd w
 argglobal
-if bufexists('website-assets/js/index.js') | buffer website-assets/js/index.js | else | edit website-assets/js/index.js | endif
+if bufexists('website-assets/js/modules/App.js') | buffer website-assets/js/modules/App.js | else | edit website-assets/js/modules/App.js | endif
 setlocal fdm=syntax
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -82,19 +117,62 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 14) / 28)
+let s:l = 23 - ((22 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+23
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 115 + 115) / 230)
-exe '2resize ' . ((&lines * 28 + 30) / 60)
-exe 'vert 2resize ' . ((&columns * 114 + 115) / 230)
-exe '3resize ' . ((&lines * 28 + 30) / 60)
-exe 'vert 3resize ' . ((&columns * 114 + 115) / 230)
-tabedit website-assets/scss/vars.scss
+exe 'vert 1resize ' . ((&columns * 118 + 117) / 235)
+exe '2resize ' . ((&lines * 24 + 31) / 62)
+exe 'vert 2resize ' . ((&columns * 116 + 117) / 235)
+exe '3resize ' . ((&lines * 34 + 31) / 62)
+exe 'vert 3resize ' . ((&columns * 116 + 117) / 235)
+tabedit website-assets/js/modules/Tools.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+setlocal fdm=syntax
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=20
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+5
+normal! zo
+6
+normal! zo
+7
+normal! zo
+14
+normal! zo
+15
+normal! zo
+14
+normal! zo
+15
+normal! zo
+14
+normal! zo
+15
+normal! zo
+15
+normal! zo
+16
+normal! zo
+let s:l = 15 - ((14 * winheight(0) + 29) / 59)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+15
+normal! 024|
+tabedit website-assets/scss/tools.scss
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -108,11 +186,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 28 + 30) / 60)
-exe 'vert 1resize ' . ((&columns * 115 + 115) / 230)
-exe '2resize ' . ((&lines * 28 + 30) / 60)
-exe 'vert 2resize ' . ((&columns * 115 + 115) / 230)
-exe 'vert 3resize ' . ((&columns * 114 + 115) / 230)
+exe '1resize ' . ((&lines * 34 + 31) / 62)
+exe 'vert 1resize ' . ((&columns * 117 + 117) / 235)
+exe '2resize ' . ((&lines * 24 + 31) / 62)
+exe 'vert 2resize ' . ((&columns * 117 + 117) / 235)
+exe 'vert 3resize ' . ((&columns * 117 + 117) / 235)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -123,11 +201,29 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 14) / 28)
+let s:l = 23 - ((19 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+23
+normal! 017|
+wincmd w
+argglobal
+if bufexists('website-assets/scss/vars.scss') | buffer website-assets/scss/vars.scss | else | edit website-assets/scss/vars.scss | endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=20
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 16 - ((15 * winheight(0) + 12) / 24)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+16
 normal! 0
 wincmd w
 argglobal
@@ -141,37 +237,19 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 14) / 28)
+let s:l = 7 - ((6 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+7
 normal! 0
 wincmd w
-argglobal
-if bufexists('website-assets/scss/styles.scss') | buffer website-assets/scss/styles.scss | else | edit website-assets/scss/styles.scss | endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=20
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 28) / 57)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-6
-normal! 0
-wincmd w
-exe '1resize ' . ((&lines * 28 + 30) / 60)
-exe 'vert 1resize ' . ((&columns * 115 + 115) / 230)
-exe '2resize ' . ((&lines * 28 + 30) / 60)
-exe 'vert 2resize ' . ((&columns * 115 + 115) / 230)
-exe 'vert 3resize ' . ((&columns * 114 + 115) / 230)
-tabnext 1
+exe '1resize ' . ((&lines * 34 + 31) / 62)
+exe 'vert 1resize ' . ((&columns * 117 + 117) / 235)
+exe '2resize ' . ((&lines * 24 + 31) / 62)
+exe 'vert 2resize ' . ((&columns * 117 + 117) / 235)
+exe 'vert 3resize ' . ((&columns * 117 + 117) / 235)
+tabnext 3
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
