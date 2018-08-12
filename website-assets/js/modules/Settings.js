@@ -40,11 +40,15 @@ class Settings {
 				}
 			}
 		}
+		this.applySettings = function (e){
+
+			return;
+		}
 		return;
 	}
 	view(vnode){
 		let that = this;
-		return m("div.settings", {
+		return m("div", {
 			class: "settings "+(MODEL.menuopen() ? "open":"")
 		}, [
 			m("div.wrapper", [

@@ -4,12 +4,18 @@ const MODEL = require("../model.js");
 
 class Tools {
 	constructor(vnode){
-		
+		this.ctrl = {
+			selectTool: function (e){
+				return;
+			}
+		}
 		return;
 	}
 	view(vnode){
 		return m("div.tools", [
-			"Tools, TEST"
+			m("div.wrapper", [
+				m("span", "Tools"),
+			]),
 		]);
 	}
 }
