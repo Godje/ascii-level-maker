@@ -5,14 +5,13 @@
 	box-shadow: 0px 0px 14px rgba(0,0,0,0.3);
 	overflow: auto;
 	position: fixed;
-	padding: 14px;
+	padding: $tools-padding;
 	display: inline-block;
 	width: $tools-width;
-	height: 400px;
 	top: 50%;
 	left: 20px;
 	transform: translate(-$tools-width, -50%);
-	transition: left 0.25s ease-in-out, transform 0.25s ease-in-out;
+	transition: left $tools-slide-transition ease-in-out, transform $tools-slide-transition ease-in-out;
 	&.open, &:hover {
 		left: 0px;
 		transform: translate(0%, -50%);
@@ -28,5 +27,14 @@
 		position: relative;
 		text-align: center;
 		font-weight: 500;
+		margin-bottom: 10px;
 	}
+}
+.tools .tool {
+	width: $tools-width - $tools-padding*2 - $tools-tool-margin*2;
+	height: $tools-width - $tools-padding*2 - $tools-tool-margin*2;
+	margin: $tools-tool-margin;
+	background-color: transparent;
+	border: 1px solid gray;
+	outline: 0;
 }
