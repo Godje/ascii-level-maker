@@ -21,6 +21,11 @@
 		width: 100%;
 		height: 100%;
 		overflow: visible;
+		div.always-open { // Checkbox for always open tools
+			display: flex;
+			flex-direction: row;
+			font-size: 12px;
+		} 	
 	}
 	span {
 		display: block;

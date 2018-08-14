@@ -28,13 +28,19 @@ class Tools {
 				let tool = el.dataset.tool;
 				MODEL.currenttool(tool);
 				return;
+			},
+			toggleAlwaysOpen: function (value){
+				MODEL.toolsopen(value);
+				return;
 			}
 		}
 		return;
 	}
 	view(vnode){
-		const that = this;
-		return m("div.tools.open", [
+		let that = this;
+		return m("div", {
+			className: "tools " + (MODEL.toolsopen() ? "open": "")
+		}, [
 			m("div.wrapper", [
 				m("span", "Tools"),
 				MODEL.tools.map(function(name){
@@ -42,7 +48,16 @@ class Tools {
 						name,
 						selected: name == MODEL.currenttool()
 					} )
-				})
+				}),
+				m("div.always-open", [
+					m("input", { 
+						type: "checkbox",
+						id: "tools-always-open",
+						onchange: m.withAttr("checked", this.ctrl.toggleAlwaysOpen),
+						checked: MODEL.toolsopen(),
+					}),
+					m("label", { for: "tools-always-open" }, "Always open")
+				])
 			]),
 		]);
 	}
