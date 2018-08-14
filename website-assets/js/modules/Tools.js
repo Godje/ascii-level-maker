@@ -2,26 +2,31 @@ const m = require("mithril");
 m.stream = require("mithril-stream");
 const MODEL = require("../model.js");
 
-const tools = [
-	{ name: "Brush" },
-	{ name: "Eraser" },
-	{ name: "Line" },
-	{ name: "Square" }
-];
-
+const imageLocation = "website-assets/images/<image>.png";
 class Tools {
 	constructor(vnode){
+		let that = this;
 		this.nodes = {
 			Tool: {
 				view: function (vnode){
-					return m("button", {
-						className: "tool tool-" + vnode.attrs.name.toLowerCase(),
-					}, "Tool");
+					let className = "tool tool-" + vnode.attrs.name.toLowerCase() + " " + (vnode.attrs.selected ? "selected":"");
+					let name = vnode.attrs.name;
+					return m("div", { 
+						className,
+						"data-tool": name,
+						onclick: that.ctrl.selectTool
+					}, [
+						m("img", { src: imageLocation.replace("<image>", name.toLowerCase()) }),
+						m("span", name)
+					]);
 				}
 			}
 		};
 		this.ctrl = {
 			selectTool: function (e){
+				let el = e.currentTarget;
+				let tool = el.dataset.tool;
+				MODEL.currenttool(tool);
 				return;
 			}
 		}
@@ -32,8 +37,11 @@ class Tools {
 		return m("div.tools.open", [
 			m("div.wrapper", [
 				m("span", "Tools"),
-				tools.map(function(el){
-					return m(that.nodes.Tool, el )
+				MODEL.tools.map(function(name){
+					return m(that.nodes.Tool, {
+						name,
+						selected: name == MODEL.currenttool()
+					} )
 				})
 			]),
 		]);

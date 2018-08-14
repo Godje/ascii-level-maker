@@ -1,5 +1,6 @@
 //MAIN
 $main-bgc: rgba(255, 234, 167,1.0);
+$text-color: rgba(45, 52, 54,1.0);
 
 //SETTINGS
 $settings-width: 500px;
@@ -16,4 +17,5 @@ $tools-bgc: #fff;
 $tools-width: 100px;
 $tools-padding: 14px;
 $tools-slide-transition: 0.2s;
-$tools-tool-margin: 5px;
+$tools-tool-margin: 4px;
+$tools-tool-border-color: $text-color;
