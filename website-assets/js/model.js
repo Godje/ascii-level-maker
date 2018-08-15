@@ -8,7 +8,7 @@ const MODEL = {
 	output: m.stream(""),
 	canvas: undefined,
 	menuopen: m.stream(false),
-	toolsopen: m.stream(false),
+	toolsopen: m.stream(true),
 	currenttool: m.stream("Brush"),
 	tools: [ "Brush", "Eraser", "Line", "Square" ],
 	types: [ { 

@@ -2,8 +2,8 @@ const m = require("mithril");
 m.stream = require("mithril-stream");
 const MODEL = require("../model.js");
 const Settings = require("./Settings.js");
-const Canvas = require("./Canvas.js");
 const Tools = require("./Tools.js");
+const Monitor = require("./Monitor.js");
 
 class App {
 	constructor(vnode){
@@ -22,9 +22,7 @@ class App {
 			]),
 			m(Settings),
 			m(Tools),
-			m("div.monitor", [
-				m(Canvas)
-			])
+			m(Monitor)
 		]);
 	}
 }
