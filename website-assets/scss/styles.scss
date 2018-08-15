@@ -2,7 +2,7 @@
 @import "./vars.scss";
 @import "./settings.scss";
 @import "./tools.scss";
-@import "./canvas.scss";
+@import "./monitor.scss";
 
 * { box-sizing: border-box; }
 
@@ -21,7 +21,7 @@ body {
 
 .root {
 	position: relative;
-	display: inline-block;
+	display: block;
 	overflow: auto;
 }
 

@@ -12,6 +12,7 @@
 	left: 20px;
 	transform: translate(-$tools-width, -50%);
 	transition: left $tools-slide-transition ease-in-out, transform $tools-slide-transition ease-in-out;
+	z-index: 4;
 	&.open, &:hover {
 		left: 0px;
 		transform: translate(0%, -50%);

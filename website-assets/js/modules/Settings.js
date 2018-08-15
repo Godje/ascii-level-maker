@@ -4,8 +4,12 @@ const MODEL = require("../model.js");
 
 const settings = [
 	{
-		name: "Canvas Size",
-		stream: MODEL.size,
+		name: "Canvas Width",
+		stream: MODEL.dimensions.width,
+	},
+	{
+		name: "Canvas Height",
+		stream: MODEL.dimensions.height,
 	},
 	{
 		name: "Tile Size",
