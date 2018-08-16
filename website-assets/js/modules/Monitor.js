@@ -1,5 +1,6 @@
 const m = require("mithril");
 m.stream = require("mithril-stream");
+const Tiles = require("./Tiles.js")
 
 const canvasSize = 600;
 
@@ -22,7 +23,8 @@ class Monitor {
 			m(Canvas, {
 				size: canvasSize
 			}),
+			m(Tiles)
 		]);
 	}
 }
-	module.exports = Monitor;
+module.exports = Monitor;
