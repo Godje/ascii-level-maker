@@ -2,12 +2,12 @@
 
 .monitor {
 	display: block;
-	position: relative;
 	width: $monitor-width;
 	min-height: $monitor-width;
 	margin: 0 auto;
 	overflow: visible;
-	z-index: -1;
+	position: relative;
+	z-index: 0;
 	h1 {
 		text-align: center;
 		font-size: 32px;

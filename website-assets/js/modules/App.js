@@ -20,9 +20,9 @@ class App {
 			}, [
 				m("div.line-1"), m("div.line-2"), m("div.line-3")
 			]),
+			m(Monitor),
 			m(Settings),
 			m(Tools),
-			m(Monitor)
 		]);
 	}
 }

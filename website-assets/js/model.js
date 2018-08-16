@@ -14,12 +14,13 @@ const MODEL = {
 	toolsopen: m.stream(true),
 	currenttool: m.stream("Brush"),
 	tools: [ "Brush", "Eraser", "Line", "Square" ],
-	types: [ { 
-		name: m.stream("Air"),
-		symbol: m.stream("=")
-	}, {
-
-	} ]
+	tiles: [
+		{
+			title: m.stream("Air"),
+			color: m.stream("#a33"),
+			symbol: m.stream("="),
+		},
+	]
 }
 
 module.exports = MODEL;
