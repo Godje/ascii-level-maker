@@ -3,9 +3,9 @@
 .monitor {
 	display: block;
 	width: $monitor-width;
-	min-height: $monitor-width;
-	margin: 0 auto;
+	min-height: 100vh; 
 	overflow: visible;
+	margin: 0 auto;
 	position: relative;
 	z-index: 0;
 	h1 {
@@ -16,4 +16,36 @@
 .monitor canvas {
 	background-color: #fff;
 	box-shadow: 0px 2px 14px 0px rgba(0,0,0,0.3);
+}
+
+.buttons {
+	display: inline-block;
+	padding: 0px 0px 2px 0px;
+}
+.buttons button {
+	font-family: "Roboto", sans-serif;
+	display: inline-block;
+	padding: $button-padding;
+	border: 0;
+	outline: 0;
+	box-shadow: 0px 0px 14px 0px rgba(0,0,0,.3);
+	margin: 0 5px;
+	background-color: #fff;
+	color: white;
+	font-weight: 500;
+	font-size: 14px;
+	cursor: pointer;
+	user-select: none;
+	&:active {
+		transform: translate(0px, 1px);
+	}
+	&:first-child {
+		margin-left: 0;
+	}
+	&.save-session {
+		background-color: $button-save-bgc;
+	}
+	&.add-tile {
+		background-color: $button-add-bgc;
+	}
 }

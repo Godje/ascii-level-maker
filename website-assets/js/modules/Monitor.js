@@ -15,6 +15,16 @@ const Canvas = {
 
 class Monitor {
 	constructor(vnode){
+		this.ctrl = {
+			createTile: function (e){
+				console.log(e)
+				return;
+			},
+			saveSession: function (e){
+				console.log(e)
+				return;
+			}
+		}
 		return;
 	}
 	view(vnode){
@@ -23,7 +33,17 @@ class Monitor {
 			m(Canvas, {
 				size: canvasSize
 			}),
-			m(Tiles)
+			m(Tiles),
+			m("div.buttons", [
+				m("button", {
+					class: "add-tile",
+					onclick: this.ctrl.createTile
+				}, "Add Tile"),
+				m("button", {
+					class: "save-session",
+					onclick: this.ctrl.saveSession
+				}, "Save JSON session")
+			])
 		]);
 	}
 }

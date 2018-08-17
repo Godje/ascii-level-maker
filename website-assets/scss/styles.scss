@@ -5,7 +5,10 @@
 @import "./monitor.scss";
 @import "./tiles.scss";
 
-* { box-sizing: border-box; }
+* { 
+	box-sizing: border-box;
+	overflow-x: hidden;
+}
 
 body {
 	margin: 0;
@@ -28,7 +31,7 @@ body {
 
 .screen {
 	margin: 0;
-	overflow: auto;
 	width: 100%;
 	height: 100%;
 }
+
