@@ -13,11 +13,12 @@ Making text-based levels graphically.
 	clone the repository
 	npm install
 	npm run watch
+	// open localhost:3000 by default
 
 ## TODO:
-	- ~~Basic structure~~
-	- ~~Settings element~~
-	- ~~Tools element~~
-	- Monitor element.
-	- Tiles picking element
+- ~~Basic structure~~
+- ~~Settings element~~
+- ~~Tools element~~
+- Monitor element.
+- Tiles picking element
 
