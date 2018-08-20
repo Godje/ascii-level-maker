@@ -15,9 +15,9 @@ Making text-based levels graphically.
 	npm run watch
 
 ## TODO:
-	- ~~Basic structure~~
-	- ~~Settings element~~
-	- ~~Tools element~~
-	- Monitor element.
-	- Tiles picking element
+- ~~Basic structure~~
+- ~~Settings element~~
+- ~~Tools element~~
+- Monitor element.
+- Tiles picking element
 
