@@ -19,5 +19,7 @@ Making text-based levels graphically.
 - ~~Settings element~~
 - ~~Tools element~~
 - Monitor element.
-- Tiles picking element
+- Tiles creation
+- Tiles editing
+- ~~Tiles picking element~~
 
