@@ -21,5 +21,6 @@ Making text-based levels graphically.
 - Monitor element.
 - Tiles creation
 - Tiles editing
+- Move session information in a single MODEL entry for export.
 - ~~Tiles picking element~~
 
