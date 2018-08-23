@@ -13,7 +13,7 @@ class Tiles {
 							let el = e.srcElement;
 							let id = el.dataset.id;
 							MODEL.currenttile(id);
-							MODEL.tiles.forEach(function (el){
+							MODEL.session.tiles.forEach(function (el){
 								el.selected(false)
 							});
 							vnode.attrs.selected(true);
@@ -52,7 +52,7 @@ class Tiles {
 		return m("div.tiles", [
 			m("div.wrapper", [
 				m("div.tiles-list", [
-					MODEL.tiles.map(function (el){
+					MODEL.session.tiles.map(function (el){
 						return m(that.nodes.Tile, el)
 					})
 				]),
