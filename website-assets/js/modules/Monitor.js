@@ -43,13 +43,15 @@ class Monitor {
 				m("button", {
 					class: "save-session",
 					onclick: this.ctrl.saveSession
-				}, "Save JSON session")
+				}, "Save JSON session"),
+				m("button", {
+					class: "get-output",
+					onclick: this.ctrl.getOutput
+				}, "Get Ouput"),
 			]),
-			modalOpen ? m(Modal, [
-				m("div.wrapper", [
-					"Test"
-				]),
-			]) : "",
+			(modalOpen ? m(Modal, [
+				m("div.thing", "CHILDREN TEST")
+			]) : "")
 		]);
 	}
 }
