@@ -67,10 +67,6 @@ class Monitor {
 					}, b.title);
 				})
 			]),
-			// MODAL EXAMPLE. Uncomment to see "Test" on the bottom of Monitor
-			// (modalOpen ? m(Modal, [
-			// 	m("div.thing", "Test")
-			// ]) : "")
 		]);
 	}
 }

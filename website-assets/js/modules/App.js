@@ -4,6 +4,7 @@ const MODEL = require("../model.js");
 const Settings = require("./Settings.js");
 const Tools = require("./Tools.js");
 const Monitor = require("./Monitor.js");
+const Modal = require("./Modal.js");
 
 class App {
 	constructor(vnode){
@@ -23,6 +24,11 @@ class App {
 			m(Monitor),
 			m(Settings),
 			m(Tools),
+			( MODEL.modalopen() ? m(Modal, [
+				m("div.tile-wrapper", [
+					"Test Tile-wrapper"
+				]),
+			]) : "" )
 		]);
 	}
 }
