@@ -7,9 +7,10 @@ class Modal {
 		return vnode;
 	}
 	view(vnode){
+		console.log(1, MODEL.modalchildren())
 		return m("div.modal-wrapper", [
 			m("div.modal-backdrop"),
-			m("div.modal-content", MODEL.modalChildren())
+			m("div.modal-content", MODEL.modalchildren())
 		])
 	}
 }

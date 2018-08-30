@@ -6,6 +6,7 @@ const Tools = require("./Tools.js");
 const Monitor = require("./Monitor.js");
 const Modal = require("./Modal.js");
 
+console.log(MODEL.modalopen())
 class App {
 	constructor(vnode){
 		this.menuClick = function(e){
@@ -24,11 +25,7 @@ class App {
 			m(Monitor),
 			m(Settings),
 			m(Tools),
-			( MODEL.modalopen() ? m(Modal, [
-				m("div.tile-wrapper", [
-					"Test Tile-wrapper"
-				]),
-			]) : "" )
+			( MODEL.modalopen() ? m(Modal) : "" )
 		]);
 	}
 }
