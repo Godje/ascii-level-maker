@@ -2,3 +2,4 @@ core
 node_modules/
 vimsession.vim
 *.vim
+website-assets/client.min.js
