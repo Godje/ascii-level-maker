@@ -37,7 +37,27 @@ class Monitor {
 	constructor(vnode){
 		this.ctrl = {
 			createTile: function (e){
-				console.log(e)
+				const openModal = function (ch){
+					console.log(ch)
+				};
+				const dataStreams = {
+					title: m.stream(""),
+					symbol: m.stream(""),
+					color: m.stream("#222222")
+				}
+				const pushTile = (title, symbol, color)=>{
+					MODEL.session.tiles.push({
+						id: ++tileid,
+						title: m.stream(title),
+						symbol: m.stream(symbol),
+						color: m.stream(color)
+					})
+				}
+				openModal([
+					m("div.create-tile", [
+
+					]),
+				]);
 				return;
 			},
 			saveSession: function (e){
