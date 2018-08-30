@@ -9,7 +9,7 @@ const MODEL = {
 		height: m.stream(10)
 	},
 	type: m.stream(""),
-	tilesize: m.stream(10),
+	tilesize: m.stream(60),
 	canvas: undefined,
 	menuopen: m.stream(false),
 	toolsopen: m.stream(true),
@@ -17,6 +17,7 @@ const MODEL = {
 	tools: [ "Brush", "Eraser", "Line", "Square" ],
 	currenttile: m.stream(1),
 	modalopen: m.stream(false),
+	modalchildren: m.stream([]),
 	session: { //JSON will be exported
 		output: m.stream(""),
 		tiles: [ //Sample tiles. Testing purposes

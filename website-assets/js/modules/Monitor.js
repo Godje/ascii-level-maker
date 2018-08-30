@@ -1,9 +1,9 @@
 const m = require("mithril");
 m.stream = require("mithril-stream");
+const MODEL = require("../model.js");
 const Tiles = require("./Tiles.js");
 const Modal = require("./Modal.js");
 
-const canvasSize = 600;
 const modalOpen = true;
 
 const buttons = [
@@ -27,8 +27,8 @@ const buttons = [
 const Canvas = {
 	view: function (vnode){
 		return m("canvas", {
-			width: vnode.attrs.size,
-			height: vnode.attrs.size,
+			width: MODEL.dimensions.width()*MODEL.tilesize(),
+			height: MODEL.dimensions.height()*MODEL.tilesize()
 		});
 	}
 };
@@ -37,7 +37,23 @@ class Monitor {
 	constructor(vnode){
 		this.ctrl = {
 			createTile: function (e){
-				console.log(e)
+				const name = m.stream("Name"),
+							symbol = m.stream("");
+				const inputs = [
+					{
+
+					}
+				]
+				openModal([
+					m("div.add-tile-wrapper", [
+						m("div.color-input"),
+						m("div.text-inputs", [
+							m("div.input", [
+								m("label[for='']")
+							])
+						]),
+					]),
+				])
 				return;
 			},
 			saveSession: function (e){
@@ -55,9 +71,7 @@ class Monitor {
 		const that = this;
 		return m("div.monitor", {}, [
 			m("h1", "ASCII Level Maker"),
-			m(Canvas, {
-				size: canvasSize
-			}),
+			m(Canvas),
 			m(Tiles),
 			m("div.buttons", [
 				buttons.map(function (b){
