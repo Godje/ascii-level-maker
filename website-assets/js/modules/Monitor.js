@@ -4,8 +4,6 @@ const MODEL = require("../model.js");
 const Tiles = require("./Tiles.js");
 const Modal = require("./Modal.js");
 
-const modalOpen = true;
-
 const buttons = [
 	{
 		title: "+ Add Tile",
@@ -38,8 +36,8 @@ class Monitor {
 		this.ctrl = {
 			createTile: function (e){
 				const openModal = function (ch){
-					MODEL.modalchildren(ch);
 					MODEL.modalopen(true);
+					MODEL.modalchildren(ch)
 				};
 				const dataStreams = {
 					title: m.stream(""),
@@ -57,22 +55,22 @@ class Monitor {
 				openModal([
 					m("div.create-tile", [
 						m("div.color-input"),
-						m("div.text-inputs", [
-							m("div.input", [
-								m("label[for='new-tile-name']", "Name"),
-								m("input[type='text']", {
-									id: "new-tile-name",
-									oninput: m.withAttr("value", dataStreams.title),
-									value: dataStreams.title()
-								}),
-								m("label[for='new-tile-symbol']", "Symbol"),
-								m("input[type='text']", {
-									id: "new-tile-symbol",
-									oninput: m.withAttr("value", dataStreams.symbol),
-									value: dataStreams.symbol()
-								}),
-							])
-						]),
+						// m("div.text-inputs", [
+						// 	m("div.input", [
+						// 		m("label[for='new-tile-name']", "Name"),
+						// 		m("input[type='text']", {
+						// 			id: "new-tile-name",
+						// 			oninput: m.withAttr("value", dataStreams.title),
+						// 			value: dataStreams.title()
+						// 		}),
+						// 		m("label[for='new-tile-symbol']", "Symbol"),
+						// 		m("input[type='text']", {
+						// 			id: "new-tile-symbol",
+						// 			oninput: m.withAttr("value", dataStreams.symbol),
+						// 			value: dataStreams.symbol()
+						// 		}),
+						// 	])
+						// ]),
 					]),
 				]);
 				return;
