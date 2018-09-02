@@ -4,12 +4,12 @@ const MODEL = require("../model.js");
 
 class Modal {
 	constructor(vnode){
-		return vnode;
+		return;
 	}
 	view(vnode){
 		return m("div.modal-wrapper", [
 			m("div.modal-backdrop"),
-			m("div.modal-content", 1)
+			m("div.modal-content", MODEL.modalchildren())
 		])
 	}
 }

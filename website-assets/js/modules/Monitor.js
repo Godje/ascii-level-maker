@@ -55,22 +55,22 @@ class Monitor {
 				openModal([
 					m("div.create-tile", [
 						m("div.color-input"),
-						// m("div.text-inputs", [
-						// 	m("div.input", [
-						// 		m("label[for='new-tile-name']", "Name"),
-						// 		m("input[type='text']", {
-						// 			id: "new-tile-name",
-						// 			oninput: m.withAttr("value", dataStreams.title),
-						// 			value: dataStreams.title()
-						// 		}),
-						// 		m("label[for='new-tile-symbol']", "Symbol"),
-						// 		m("input[type='text']", {
-						// 			id: "new-tile-symbol",
-						// 			oninput: m.withAttr("value", dataStreams.symbol),
-						// 			value: dataStreams.symbol()
-						// 		}),
-						// 	])
-						// ]),
+						m("div.text-inputs", [
+							m("div.input", [
+								m("label[for='new-tile-name']", "Name"),
+								m("input[type='text']", {
+									id: "new-tile-name",
+									oninput: m.withAttr("value", dataStreams.title),
+									value: dataStreams.title()
+								}),
+								m("label[for='new-tile-symbol']", "Symbol"),
+								m("input[type='text']", {
+									id: "new-tile-symbol",
+									oninput: m.withAttr("value", dataStreams.symbol),
+									value: dataStreams.symbol()
+								}),
+							])
+						]),
 					]),
 				]);
 				return;
