@@ -17,7 +17,7 @@ const MODEL = {
 	tools: [ "Brush", "Eraser", "Line", "Square" ],
 	currenttile: m.stream(1),
 	modalopen: m.stream(false),
-	modalchildren: m.stream([]),
+	modalcomponent: m.stream([]),
 	session: { //JSON will be exported
 		output: m.stream(""),
 		tiles: [ //Sample tiles. Testing purposes
