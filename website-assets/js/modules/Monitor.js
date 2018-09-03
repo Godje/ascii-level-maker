@@ -36,7 +36,7 @@ const CreateModal = {
 		this.dataStreams = {
 			title: m.stream(""),
 			symbol: m.stream(""),
-			color: m.stream("#222222")
+			color: m.stream("gray")
 		};
 		this.acceptInput = function (){
 			let { title, symbol, color } = this.dataStreams;
@@ -59,29 +59,33 @@ const CreateModal = {
 	},
 	view: function(vnode){
 		return m("div.create-tile", [
-			m("div.color-input", [
-				m("input[type='color']", {
-					onchange: m.withAttr("value", this.dataStreams.color),
-					value: this.dataStreams.color()
-				})
-			]),
-			m("div.text-inputs", [
-				m("div.input", [
-					m("label[for='new-tile-name']", "Name"),
-					m("input[type='text']", {
-						id: "new-tile-name",
-						oninput: m.withAttr("value", this.dataStreams.title),
-						value: this.dataStreams.title()
-					}),
+			m("div.create-inputs", [
+				m("div.color-input", [
+					m("label[for='new-tile-color']", "Color"),
+					m("input[type='color']", {
+						id: "new-tile-color",
+						onchange: m.withAttr("value", this.dataStreams.color),
+						value: this.dataStreams.color()
+					})
 				]),
-				m("div.input", [
-					m("label[for='new-tile-symbol']", "Symbol"),
-					m("input[type='text']", {
-						id: "new-tile-symbol",
-						oninput: m.withAttr("value", this.dataStreams.symbol),
-						value: this.dataStreams.symbol(),
-						"max-length": 1,
-					}),
+				m("div.text-inputs", [
+					m("div.input", [
+						m("label[for='new-tile-name']", "Name"),
+						m("input[type='text']", {
+							id: "new-tile-name",
+							oninput: m.withAttr("value", this.dataStreams.title),
+							value: this.dataStreams.title()
+						}),
+					]),
+					m("div.input", [
+						m("label[for='new-tile-symbol']", "Symbol"),
+						m("input[type='text']", {
+							id: "new-tile-symbol",
+							oninput: m.withAttr("value", this.dataStreams.symbol),
+							value: this.dataStreams.symbol(),
+							"max-length": 1,
+						}),
+					]),
 				]),
 			]),
 			m("button", {
