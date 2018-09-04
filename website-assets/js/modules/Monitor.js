@@ -103,7 +103,11 @@ const EditModal = {
 		return;
 	},
 	view: function (vnode){
-		return m("div.edit-tile", []);
+		return m("div.edit-tile", [
+			m("div.edit-inputs", [
+
+			])
+		]);
 	}
 }
 
