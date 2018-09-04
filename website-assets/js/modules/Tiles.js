@@ -1,13 +1,15 @@
 const m = require("mithril");
 			m.stream = require("mithril-stream");
 const MODEL = require("../model.js");
-
+const EditModal = require("./EditModal.js");
 
 class Tiles {
 	constructor(vnode){
 		this.nodes = {
 			Tile: {
 				oninit: function (vnode){
+					let that = this;
+					this.realIndex = MODEL.session.tiles.indexOf(vnode.attrs);
 					this.ctrl = {
 						selectTile: function (e){
 							let el = e.srcElement;
@@ -17,9 +19,20 @@ class Tiles {
 								el.selected(false)
 							});
 							vnode.attrs.selected(true);
+							console.log(MODEL.session.tiles)
 							return;
 						},
 						editTile: function (e){
+							let that = this;
+							const openModal = function (ch){
+								MODEL.modalopen(true);
+								MODEL.modalcomponent(ch);
+							}
+							openModal({
+								view: function (){
+									return m(EditModal, { realIndex: that.realIndex })
+								}
+							})
 							return;
 						}
 					}
@@ -29,7 +42,7 @@ class Tiles {
 					return m("div", {
 						class: "tile "+ (vnode.attrs.selected() ? "selected":""),
 						onclick: this.ctrl.selectTile,
-						"data-id": vnode.attrs.id
+						"data-id": vnode.attrs.id()
 					}, [
 						m("div.color", {
 							style: "background-color: "+vnode.attrs.color()
@@ -38,9 +51,8 @@ class Tiles {
 						m("div.info", [
 							m("span.symbol", vnode.attrs.symbol()),
 							m("span.edit-button", {
-								onclick: this.ctrl.editTile
-							},
-								"Edit")
+								onclick: this.ctrl.editTile.bind(this)
+							}, "Edit")
 						])
 					]);
 				}
@@ -52,7 +64,7 @@ class Tiles {
 		return m("div.tiles", [
 			m("div.wrapper", [
 				m("div.tiles-list", [
-					MODEL.session.tiles.map(function (el){
+					MODEL.session.tiles.map(function(el){
 						return m(that.nodes.Tile, el)
 					})
 				]),

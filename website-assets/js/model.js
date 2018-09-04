@@ -22,23 +22,23 @@ const MODEL = {
 		output: m.stream(""),
 		tiles: [ //Sample tiles. Testing purposes
 			{
-				id: tileid(tileid()+1),
+				id: m.stream(tileid(tileid()+1)),
 				title: m.stream("Stone"),
-				color: m.stream("#999"),
+				color: m.stream("#999999"),
 				symbol: m.stream("o"),
 				selected: m.stream(false)
 			},
 			{
-				id: tileid(tileid()+1),
+				id: m.stream(tileid(tileid()+1)),
 				title: m.stream("Air"),
-				color: m.stream("#a33"),
+				color: m.stream("#aa3333"),
 				symbol: m.stream("-"),
 				selected: m.stream(false)
 			},
 			{
-				id: tileid(tileid()+1),
+				id: m.stream(tileid(tileid()+1)),
 				title: m.stream("Grass"),
-				color: m.stream("#9f9"),
+				color: m.stream("#99ff99"),
 				symbol: m.stream("="),
 				selected: m.stream(true)
 			},
