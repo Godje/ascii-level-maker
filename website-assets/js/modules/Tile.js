@@ -11,11 +11,8 @@ class Tile {
 			let el = e.srcElement;
 			let id = el.dataset.id;
 			MODEL.currenttile(id);
-			MODEL.session.tiles.forEach(function (el){
-				el.selected(false)
-			});
-			vnode.attrs.selected(true);
-			console.log(MODEL.session.tiles)
+			MODEL.session.tiles.forEach( (tile) => tile.selected(false) );
+			MODEL.session.tiles[ that.realIndex ].selected(true);
 			return;
 		},
 			this.editTile = function(e){
