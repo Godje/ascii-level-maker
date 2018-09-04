@@ -62,12 +62,14 @@ const CreateModal = {
 					]),
 				]),
 			]),
-			m("button", {
-				onclick: function(){ 
-					MODEL.modalopen(false);
-					this.acceptInput();
-				}.bind(this)
-			}, "Create Tile")
+			m("div.buttons", [
+				m("button", {
+					onclick: function(){ 
+						MODEL.modalopen(false);
+						this.acceptInput();
+					}.bind(this)
+				}, "Create Tile")
+			])
 		]);
 	}
 };

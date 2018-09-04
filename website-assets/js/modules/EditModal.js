@@ -10,6 +10,7 @@ const EditModal = {
 			title: m.stream(this.original.title()),
 			symbol: m.stream(this.original.symbol()),
 			color: m.stream(this.original.color()),
+			selected: m.stream(false),
 		}
 		this.acceptInput = ()=>{
 			if(this.fake.title().length > 0 && this.fake.symbol().length > 0) this.submitEdit();
@@ -27,6 +28,7 @@ const EditModal = {
 	},
 	view: function(vnode){
 		return m("div.edit-tile", [
+			m("h2", "Edit Tile"),
 			m("div.create-inputs", [
 				m("div.color-input", [
 					m("label[for='new-tile-color']", "Color"),
@@ -56,18 +58,20 @@ const EditModal = {
 					]),
 				]),
 			]),
-			m("button", {
-				onclick: function(){ 
-					MODEL.modalopen(false);
-					this.acceptInput();
-				}.bind(this)
-			}, "Edit Tile"),
-			m("button", {
-				onclick: function(){
-					MODEL.modalopen(false);
-					this.deleteTile();
-				}.bind(this)
-			})
+			m("div.buttons", [
+				m("button", {
+					onclick: function(){ 
+						MODEL.modalopen(false);
+						this.acceptInput();
+					}.bind(this)
+				}, "Edit Tile"),
+				m("button.delete", {
+					onclick: function(){
+						MODEL.modalopen(false);
+						this.deleteTile();
+					}.bind(this)
+				}, "Delete Tile")
+			])
 		]);
 	}
 }
