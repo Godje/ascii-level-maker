@@ -1,6 +1,7 @@
 const m = require("mithril");
 m.stream = require("mithril-stream");
-const MODEL = require("../model.js");
+const frame = require("../frame.js");
+const MODEL = frame.MODEL;
 const Tiles = require("./Tiles.js");
 const Modal = require("./Modal.js");
 const CreateModal = require("./CreateModal.js");
