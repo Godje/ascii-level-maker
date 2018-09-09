@@ -1,6 +1,7 @@
 const m = require("mithril");
 m.stream= require("mithril-stream");
-const MODEL = require("../model.js");
+const frame = require("../frame.js");
+const MODEL = frame.MODEL;
 
 var defaultscale = 60;
 

@@ -46,5 +46,10 @@ const MODEL = {
 	},
 	tileid: m.stream(tileid())
 }
+const CTRL = {
 
-module.exports = MODEL;
+}
+
+module.exports = {
+	CTRL, MODEL
+};
