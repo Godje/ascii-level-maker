@@ -4,6 +4,7 @@ const MODEL = require("../model.js");
 const Tiles = require("./Tiles.js");
 const Modal = require("./Modal.js");
 const CreateModal = require("./CreateModal.js");
+const Canvas = require("./Canvas.js");
 
 const buttons = [
 	{
@@ -23,14 +24,6 @@ const buttons = [
 	}
 ];
 
-const Canvas = {
-	view: function (vnode){
-		return m("canvas", {
-			width: MODEL.dimensions.width()*MODEL.tilesize(),
-			height: MODEL.dimensions.height()*MODEL.tilesize()
-		});
-	}
-};
 
 
 class Monitor {
@@ -49,6 +42,9 @@ class Monitor {
 			},
 			getOutput: function (e){
 				console.log(e)
+				return;
+			},
+			zoom: function (dir){
 				return;
 			}
 		}

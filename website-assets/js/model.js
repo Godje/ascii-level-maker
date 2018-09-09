@@ -8,8 +8,8 @@ const MODEL = {
 		width: m.stream(10),
 		height: m.stream(10)
 	},
+	zoom: m.stream(1),
 	type: m.stream(""),
-	tilesize: m.stream(60),
 	canvas: undefined,
 	menuopen: m.stream(false),
 	toolsopen: m.stream(true),

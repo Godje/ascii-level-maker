@@ -11,10 +11,6 @@ const settings = [
 		name: "Canvas Height",
 		stream: MODEL.dimensions.height,
 	},
-	{
-		name: "Tile Size",
-		stream: MODEL.tilesize
-	}
 ];
 
 class Settings {
