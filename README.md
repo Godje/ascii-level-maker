@@ -16,12 +16,8 @@ Making text-based levels graphically.
 	// open localhost:3000 by default
 
 ## TODO:
-- ~~Basic structure~~
-- ~~Settings element~~
-- ~~Tools element~~
-- Monitor element.
-- Tiles picking element
-- Tiles creation
-- Tiles editing
-- Move session information in a single MODEL entry for export.
-- ~~Tiles picking element~~
+- ~~Tiles creation~~
+- ~~Tiles editing~~
+- ~~Move session information in a single MODEL entry for export.~~
+- Creating actual drawing for BRUSH tool.
+- Drawing while zoomed in
