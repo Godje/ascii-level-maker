@@ -2,8 +2,9 @@ const m = require("mithril");
 m.stream= require("mithril-stream");
 const frame = require("../frame.js");
 const MODEL = frame.MODEL;
+const CTRL = frame.CTRL;
 
-var defaultscale = 60;
+var defaultscale = 20;
 
 const Canvas = {
 	view: function (vnode){
@@ -15,9 +16,13 @@ const Canvas = {
 				height: MODEL.dimensions.height() * defaultscale * MODEL.zoom(),
 			}),
 			m("div.zoom", [
-				m("button", "+"),
+				m("button", {
+					onclick: CTRL.zoomIn,
+				}, "+"),
 				m("hr"),
-				m("button", "-")
+				m("button", {
+					onclick: CTRL.zoomOut
+				}, "-")
 			])
 		]);
 	}

@@ -20,7 +20,7 @@ class Settings {
 			Field: {
 				oninit: function (vnode){
 					this.processInput = function (value){
-						vnode.attrs.stream(value);
+						vnode.attrs.stream(value)
 						return value;
 					}
 					return vnode;
