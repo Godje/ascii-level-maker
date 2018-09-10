@@ -47,7 +47,12 @@ const MODEL = {
 	tileid: m.stream(tileid())
 }
 const CTRL = {
-
+	zoomIn: function (){
+		MODEL.zoom( MODEL.zoom() + 0.25 )
+	},
+	zoomOut: function (){
+		MODEL.zoom( MODEL.zoom() - 0.25 )
+	}
 }
 
 module.exports = {

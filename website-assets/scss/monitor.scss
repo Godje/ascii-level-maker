@@ -13,16 +13,14 @@
 		font-size: 32px;
 	}
 }
-.monitor canvas {
-	background-color: #fff;
-}
 .canvas-wrapper {
 	width: 600px;
 	max-height: 600px;
 	box-shadow: $default-shadow;
 	overflow: auto;
 	& > canvas {
-		margin: 0 auto;
+		background-color: #fff;
+		vertical-align: top; //unfair scroll-bar fix
 	}
 	& > .zoom {
 		display: inline-block;
