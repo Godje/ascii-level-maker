@@ -5,11 +5,11 @@ const MODEL = frame.MODEL;
 const EditModal = require("./EditModal.js");
 const Tile = require("./Tile.js");
 
-class Tiles {
-	constructor(vnode){
+const Tiles = {
+	oninit: function(vnode){
 		return;
-	} 
-	view(vnode){
+	} ,
+	view: function(vnode){
 		let that = this;
 		return m("div.tiles", [
 			m("div.wrapper", [

@@ -43,6 +43,10 @@
 			color: gray;
 			font-weight: bolder;
 			cursor: pointer;
+			outline: 0;
+			&:focus {
+				background-color: #efefef;
+			}
 		}
 	}
 }

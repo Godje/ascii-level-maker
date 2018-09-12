@@ -4,8 +4,8 @@ const frame = require("../frame.js");
 const MODEL = frame.MODEL;
 
 const imageLocation = "website-assets/images/<image>.png";
-class Tools {
-	constructor(vnode){
+const Tools = {
+	oninit: function(vnode){
 		let that = this;
 		this.nodes = {
 			Tool: {
@@ -36,8 +36,8 @@ class Tools {
 			}
 		}
 		return;
-	}
-	view(vnode){
+	},
+	view: function(vnode){
 		let that = this;
 		return m("div", {
 			className: "tools " + (MODEL.toolsopen() ? "open": "")

@@ -3,14 +3,14 @@ const m = require("mithril");
 const frame = require("../frame.js");
 const MODEL = frame.MODEL;
 
-class Modal {
-	constructor(vnode){
+const Modal = {
+	oninit: function(vnode){
 		this.closeModal = function (e){
 			MODEL.modalopen(false)
 		}
 		return;
-	}
-	view(vnode){
+	},
+	view: function(vnode){
 		return m("div.modal-wrapper", [
 			m("div.modal-backdrop", {
 				onclick: this.closeModal

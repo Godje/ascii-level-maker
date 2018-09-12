@@ -4,8 +4,8 @@ const frame = require("../frame.js");
 const MODEL = frame.MODEL;
 const EditModal = require("./EditModal.js");
 
-class Tile {
-	constructor(vnode){
+const Tile = {
+	oninit: function(vnode){
 		let that = this;
 		this.realIndex = MODEL.session.tiles.indexOf(vnode.attrs);
 		this.selectTile = function (e){
@@ -29,8 +29,8 @@ class Tile {
 				})
 				return;
 			}
-	}
-	view(vnode){
+	},
+	view: function(vnode){
 		return m("div", {
 			class: "tile "+ (vnode.attrs.selected() ? "selected":""),
 			onclick: this.selectTile,
