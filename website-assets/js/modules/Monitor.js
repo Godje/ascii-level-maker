@@ -27,8 +27,8 @@ const buttons = [
 
 
 
-class Monitor {
-	constructor(vnode){
+const Monitor = {
+	oninit: function(vnode){
 		this.ctrl = {
 			createTile: function (e){
 				const openModal = function (ch){
@@ -50,10 +50,10 @@ class Monitor {
 			}
 		}
 		return;
-	}
-	view(vnode){
+	},
+	view: function(vnode){
 		const that = this;
-		return m("div.monitor", {}, [
+		return m("div.monitor", { }, [
 			m("h1", "ASCII Level Maker"),
 			m(Canvas),
 			m(Tiles),

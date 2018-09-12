@@ -3,63 +3,66 @@ m.stream = require("mithril-stream");
 const frame = require("../frame.js");
 const MODEL = frame.MODEL;
 
-const settings = [
-	{
-		name: "Canvas Width",
-		stream: MODEL.dimensions.width,
-	},
-	{
-		name: "Canvas Height",
-		stream: MODEL.dimensions.height,
-	},
-];
-
-class Settings {
-	constructor(vnode){
+const Settings = {
+	oninit: function(vnode){
+		this.fields = [
+			{
+				name: "Canvas Width",
+				value: m.stream( MODEL.dimensions.width() ),
+				target: MODEL.dimensions.width
+			},
+			{
+				name: "Canvas Height",
+				value: m.stream( MODEL.dimensions.height() ),
+				target: MODEL.dimensions.height
+			}
+		];
 		this.nodes = {
 			Field: {
 				oninit: function (vnode){
-					this.processInput = function (value){
-						vnode.attrs.stream(value)
-						return value;
+					this.ctrl = {
+						processInput: function (value){
+							let str = value.replace(/\D+/g, ''); //only numbers
+							vnode.attrs.value( str )
+						}
 					}
-					return vnode;
 				},
-				view: function (vnode){
-					let that = this;
+				view: function(vnode){
 					let lowname = vnode.attrs.name.toLowerCase().replace(" ", "-");
 					return m("div.input-wrapper", [
 						m("label", {
 							for: "input-"+lowname
 						}, vnode.attrs.name),
 						m("input", {
-							id: "input-"+lowname,
-							oninput: m.withAttr("value", that.processInput),
-							value: vnode.attrs.stream(),
+							oninput: m.withAttr("value", this.ctrl.processInput),
+							value: vnode.attrs.value
 						})
 					])
 				}
 			}
 		}
-		this.applySettings = function (e){
-
-			return;
+		this.ctrl = {
+			applySettings: function (event){
+				this.fields.forEach( function (field){
+					field.target( field.value() );
+				})
+			}
 		}
 		return;
-	}
-	view(vnode){
+	},
+	view: function(vnode){
 		let that = this;
 		return m("div", {
 			class: "settings "+(MODEL.menuopen() ? "open":"")
 		}, [
 			m("div.wrapper", [
 				m("h1", "Settings"),
-				settings.map(function(el, ind){
-					return m(that.nodes.Field, el)
-				}),
+				this.fields.map( function (fieldData){
+					return m(that.nodes.Field, fieldData)
+				} ),
 				m("input", {
 					type: "button",
-					onclick: this.applySettings,
+					onclick: this.ctrl.applySettings.bind(this),
 					value: "Apply"
 				})
 			])

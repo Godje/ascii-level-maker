@@ -2,6 +2,7 @@ const m = require("mithril");
 			m.stream = require("mithril-stream");
 
 const tileid = m.stream(0);
+const monitorwidth = 600;
 
 const MODEL = {
 	dimensions: {
@@ -46,12 +47,18 @@ const MODEL = {
 	},
 	tileid: m.stream(tileid())
 }
+
+const minzoom = 0.99;
+const zoomstep = 0.25;
+
 const CTRL = {
 	zoomIn: function (){
-		MODEL.zoom( MODEL.zoom() + 0.25 )
+		let futurezoom = MODEL.zoom() + zoomstep;
+		futurezoom > minzoom ? MODEL.zoom( futurezoom ) : void 0;
 	},
 	zoomOut: function (){
-		MODEL.zoom( MODEL.zoom() - 0.25 )
+		let futurezoom = MODEL.zoom() - zoomstep;
+		futurezoom > minzoom ? MODEL.zoom( futurezoom ) : void 0;
 	}
 }
 

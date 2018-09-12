@@ -7,15 +7,14 @@ const Tools = require("./Tools.js");
 const Monitor = require("./Monitor.js");
 const Modal = require("./Modal.js");
 
-console.log(MODEL.modalopen())
-class App {
-	constructor(vnode){
+const App = {
+	oninit: function(vnode){
 		this.menuClick = function(e){
 			MODEL.menuopen( !MODEL.menuopen() )
 		}
 		return;
-	}
-	view(vnode){
+	},
+	view: function(vnode){
 		return m(".screen", [
 			m("div", {
 				class: "settings-toggle "+(MODEL.menuopen() ? "open" : ""),
