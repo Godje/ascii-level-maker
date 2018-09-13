@@ -9,6 +9,10 @@ const MODEL = {
 		width: m.stream(10),
 		height: m.stream(10)
 	},
+	scroll: {
+		x: m.stream(0),
+		y: m.stream(0),
+	},
 	zoom: m.stream(1),
 	type: m.stream(""),
 	canvas: undefined,

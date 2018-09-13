@@ -5,7 +5,7 @@ const MODEL = frame.MODEL;
 const Tiles = require("./Tiles.js");
 const Modal = require("./Modal.js");
 const CreateModal = require("./CreateModal.js");
-const Canvas = require("./Canvas.js");
+const CanvasMonitor = require("./CanvasMonitor.js");
 
 const buttons = [
 	{
@@ -55,7 +55,7 @@ const Monitor = {
 		const that = this;
 		return m("div.monitor", { }, [
 			m("h1", "ASCII Level Maker"),
-			m(Canvas),
+			m(CanvasMonitor),
 			m(Tiles),
 			m("div.buttons", [
 				buttons.map(function (b){
