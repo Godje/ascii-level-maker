@@ -5,6 +5,8 @@ const MODEL = frame.MODEL;
 
 const Settings = {
 	oninit: function(vnode){
+		let that = this;
+		this.displayWarning = false;
 		this.fields = [
 			{
 				name: "Canvas Width",
@@ -23,6 +25,8 @@ const Settings = {
 					this.ctrl = {
 						processInput: function (value){
 							let str = value.replace(/\D+/g, ''); //only numbers
+							if( value != vnode.attrs.target() ) that.displayWarning = true;
+
 							vnode.attrs.value( str )
 						}
 					}
@@ -39,10 +43,16 @@ const Settings = {
 						})
 					])
 				}
+			},
+			Warning: {
+				view: function (vnode){
+					return m("p.warning", "You may lose your work if you apply changes. Save your progress before you click \"Apply\"")
+				}
 			}
 		}
 		this.ctrl = {
 			applySettings: function (event){
+				this.displayWarning = false;
 				this.fields.forEach( function (field){
 					field.target( field.value() );
 				})
@@ -59,7 +69,8 @@ const Settings = {
 				m("h1", "Settings"),
 				this.fields.map( function (fieldData){
 					return m(that.nodes.Field, fieldData)
-				} ),
+				} ),	
+				this.displayWarning ? m(this.nodes.Warning) : "",
 				m("input", {
 					type: "button",
 					onclick: this.ctrl.applySettings.bind(this),
