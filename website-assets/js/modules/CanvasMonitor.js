@@ -5,12 +5,6 @@ const MODEL = frame.MODEL;
 const CTRL = frame.CTRL;
 const CanvasControl = require("./Canvas.js");
 
-const monitorwidth = 600;
-const defaultscale = m.stream.combine( function ( width, height, zoom ){
-	let size = monitorwidth / width();
-	return size;
-}, [ MODEL.dimensions.width, MODEL.dimensions.height, MODEL.zoom] );
-
 const Canvas = {
 	oncreate: function (vnode){
 		CanvasControl( vnode.dom )
@@ -19,7 +13,6 @@ const Canvas = {
 		CanvasControl( vnode.dom );
 	},
 	onbeforeupdate: function (vnode, old){
-		console.log(vnode, old)
 		if( vnode.attrs.width !== old.attrs.width ) return true;
 		if( vnode.attrs.height !== old.attrs.height ) return true;
 		return false;
@@ -39,8 +32,11 @@ const CanvasMonitor = {
 			scroll: function (e){
 				MODEL.scroll.x( e.target.scrollLeft );
 				MODEL.scroll.y( e.target.scrollTop );
-				console.log( MODEL.scroll.x(), MODEL.scroll.y() )
 			},
+			zoomInput: function (value){
+				if(value >= 1) MODEL.zoom( value );
+				else return;
+			}
 		};
 	},
 	view: function (vnode){
@@ -49,10 +45,15 @@ const CanvasMonitor = {
 			onscroll: this.ctrl.scroll.bind(this)
 		}, [
 			m(Canvas, {
-				width: MODEL.dimensions.width() * defaultscale() * MODEL.zoom(),
-				height: MODEL.dimensions.height() * defaultscale() * MODEL.zoom(),
+				width: MODEL.dimensions.width() * MODEL.defaultscale() * MODEL.zoom(),
+				height: MODEL.dimensions.height() * MODEL.defaultscale() * MODEL.zoom(),
 			}),
 			m("div.zoom", [
+				m("input", {
+					type: "number",
+					oninput: m.withAttr("value", this.ctrl.zoomInput),
+					value: MODEL.zoom()
+				}),
 				m("button", {
 					onclick: CTRL.zoomIn,
 				}, "+"),

@@ -30,12 +30,24 @@
 		top: 60px;
 		left: calc(100% + 14px);
 		border-radius: 4px;
+		input {
+			height: $zoom-ui-height;
+			width: $zoom-ui-width;
+			border: 0;
+			text-align: center;
+			border-bottom: 1px solid gray;
+			-moz-appearance: textfield;
+			&::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+		}
 		hr {
 			margin: 0;
 		}
 		button {
-			width: 30px;
-			height: 40px;
+			width: $zoom-ui-width;
+			height: $zoom-ui-height;
 			border: 0;
 			background-color: #fff;
 			overflow: hidden;

@@ -13,6 +13,7 @@ const MODEL = {
 		x: m.stream(0),
 		y: m.stream(0),
 	},
+	defaultscale: null, //defined later in this file
 	zoom: m.stream(1),
 	type: m.stream(""),
 	canvas: undefined,
@@ -51,6 +52,11 @@ const MODEL = {
 	},
 	tileid: m.stream(tileid())
 }
+
+MODEL.defaultscale = m.stream.combine( function ( width, height, zoom ){
+	let size = 600 / width();
+	return size;
+}, [ MODEL.dimensions.width, MODEL.dimensions.height, MODEL.zoom] );
 
 const minzoom = 0.99;
 const zoomstep = 0.25;
