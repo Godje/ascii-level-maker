@@ -41,7 +41,7 @@ gulp.task("js", function(){
 		.bundle()
 		.on("error", skipError) // might be the wrong fix. If anything, delete this.
 		.pipe(source(jsWatch))
-		.pipe(streamify(uglify()))
+		//.pipe(streamify(uglify()))
 		.pipe(rename("client.min.js"))
 		.pipe(gulp.dest("./website-assets"));
 });

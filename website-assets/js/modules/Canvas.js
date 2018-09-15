@@ -72,7 +72,6 @@ module.exports = function (dom){
 		let tilesize = defaultscale() * zoom();
 		$.lineWidth = 1;
 		$.strokeStyle = gridcolor;
-		console.log("Tilesize: ",tilesize)
 		for(let x = 1; x < dimensions.width(); x++){
 			$.moveTo( x*tilesize, 0 );
 			$.lineTo( x*tilesize, dimensions.height() * tilesize);
@@ -90,7 +89,6 @@ module.exports = function (dom){
 		image.height = dom.height;
 		drawTiles(MODEL.session.data(), image)
 		redraw();
-		console.log("called")
 	}
 	function redraw(){
 		$.drawImage( image, 0, 0 )

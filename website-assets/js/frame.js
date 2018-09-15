@@ -84,6 +84,10 @@ const CTRL = {
 		let futurezoom = MODEL.zoom() - zoomstep;
 		futurezoom > minzoom ? MODEL.zoom( futurezoom ) : void 0;
 	},
+	openModal: function (ch){
+		MODEL.modalopen(true);
+		MODEL.modalcomponent(ch);
+	},
 	fillData: function (){
 		MODEL.session.data(
 			new Array( MODEL.dimensions.height() ).fill(
@@ -92,6 +96,21 @@ const CTRL = {
 				)
 			)
 		)
+	},
+	refillData: function (){
+		let data = MODEL.session.data();
+		for(let y = 0; y < MODEL.dimensions.height(); y++){
+			if(data[y] == null){
+				data.push( new Array(MODEL.dimensions.width()).fill( MODEL.session.tiles[0] ) );
+			}
+		}
+		for(let y = 0; y < MODEL.dimensions.height(); y++){
+			for(let x = 0; x < MODEL.dimensions.width(); x++){
+				if(data[y][x] == null ){
+					data[y][x] = MODEL.session.tiles[0];
+				}
+			}
+		}
 	},
 	redrawCanvas: function (){ //very fake, don't blame me, i suck. Change of width in stream will re-plant the canvas element and redraw
 		MODEL.toggleRedraw(true)

@@ -56,7 +56,8 @@ const Settings = {
 				this.displayWarning = false;
 				this.fields.forEach( function (field){
 					field.target( field.value() );
-				})
+				});
+				CTRL.refillData();
 				CTRL.redrawCanvas()
 			}
 		}
