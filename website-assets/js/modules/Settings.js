@@ -2,6 +2,7 @@ const m = require("mithril");
 m.stream = require("mithril-stream");
 const frame = require("../frame.js");
 const MODEL = frame.MODEL;
+const CTRL = frame.CTRL;
 
 const Settings = {
 	oninit: function(vnode){
@@ -56,6 +57,7 @@ const Settings = {
 				this.fields.forEach( function (field){
 					field.target( field.value() );
 				})
+				CTRL.redrawCanvas()
 			}
 		}
 		return;

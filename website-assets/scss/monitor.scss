@@ -21,15 +21,21 @@
 	& > canvas {
 		background-color: #fff;
 		vertical-align: top; //unfair scroll-bar fix
+		user-select: none;
 	}
-	& > .zoom {
+
+	.control-bar {
 		display: inline-block;
-		background-color: white;
-		box-shadow: $default-shadow;
+		background-color: none;
 		position: absolute;
 		top: 60px;
 		left: calc(100% + 14px);
-		border-radius: 4px;
+		overflow: visible;
+		& > * {
+			margin-top: 20px;
+			box-shadow: $default-shadow;
+			border-radius: 4px;
+		}
 		input {
 			height: $zoom-ui-height;
 			width: $zoom-ui-width;
@@ -56,6 +62,16 @@
 			font-weight: bolder;
 			cursor: pointer;
 			outline: 0;
+			&:active {
+				background-color: #efefef;
+			}
+		}
+	}
+	.zoom {
+		background-color: white;
+		overflow: hidden;
+		margin-top: 0;
+		button {
 			&:focus {
 				background-color: #efefef;
 			}

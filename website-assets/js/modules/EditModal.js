@@ -2,6 +2,7 @@ const m = require("mithril");
 m.stream= require("mithril-stream");
 const frame = require("../frame.js");
 const MODEL = frame.MODEL;
+const CTRL = frame.CTRL;
 
 const EditModal = {
 	oninit: function (vnode){
@@ -19,11 +20,10 @@ const EditModal = {
 		}
 		this.submitEdit = function (){
 			Object.assign( this.original, this.fake )
-			console.log(MODEL.session.tiles)
+			CTRL.redrawCanvas()
 		}
 		this.deleteTile = function (){
 			MODEL.session.tiles.splice( i, 1 )
-			console.log(MODEL.session.tiles)
 		}
 		return;
 	},

@@ -15,15 +15,17 @@ const Canvas = {
 	onbeforeupdate: function (vnode, old){
 		if( vnode.attrs.width !== old.attrs.width ) return true;
 		if( vnode.attrs.height !== old.attrs.height ) return true;
+		if( vnode.attrs.toggleRedraw == true ) return true;
 		return false;
 	},
 	view: function (vnode){
 		return m("canvas", {
 			id: "canvas",
+			title: "Redrawn: " + vnode.attrs.redrawAmount + " times",
 			width: vnode.attrs.width,
 			height: vnode.attrs.height,
 		})
-	}
+	},
 }
 
 const CanvasMonitor = {
@@ -47,20 +49,29 @@ const CanvasMonitor = {
 			m(Canvas, {
 				width: MODEL.dimensions.width() * MODEL.defaultscale() * MODEL.zoom(),
 				height: MODEL.dimensions.height() * MODEL.defaultscale() * MODEL.zoom(),
+				toggleRedraw: MODEL.toggleRedraw()
 			}),
-			m("div.zoom", [
-				m("input", {
-					type: "number",
-					oninput: m.withAttr("value", this.ctrl.zoomInput),
-					value: MODEL.zoom()
-				}),
+			m("div.control-bar", [
+				m("div.zoom", [
+					m("input", {
+						type: "number",
+						oninput: m.withAttr("value", this.ctrl.zoomInput),
+						value: MODEL.zoom()
+					}),
+					m("button", {
+						title: "Zoom In",
+						onclick: CTRL.zoomIn,
+					}, "+"),
+					m("hr"),
+					m("button", {
+						title: "Zoom Out",
+						onclick: CTRL.zoomOut
+					}, "-")
+				]),
 				m("button", {
-					onclick: CTRL.zoomIn,
-				}, "+"),
-				m("hr"),
-				m("button", {
-					onclick: CTRL.zoomOut
-				}, "-")
+					onclick: CTRL.redrawCanvas,
+					title: "Redraw"
+				}, m("span.fas.fa-sync-alt")),
 			])
 		]);
 	}
