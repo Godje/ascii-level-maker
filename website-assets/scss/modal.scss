@@ -124,6 +124,13 @@
 	}
 }
 
+.output-modal {
+	textarea {
+		width: 320px;
+		height: 320px;
+		white-space: nowrap;
+	}
+}
 
 //FADE IN ANIMATION
 @keyframes fadeIn {

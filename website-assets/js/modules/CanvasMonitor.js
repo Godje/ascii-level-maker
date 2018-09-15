@@ -21,7 +21,6 @@ const Canvas = {
 	view: function (vnode){
 		return m("canvas", {
 			id: "canvas",
-			title: "Redrawn: " + vnode.attrs.redrawAmount + " times",
 			width: vnode.attrs.width,
 			height: vnode.attrs.height,
 		})

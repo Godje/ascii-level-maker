@@ -49,11 +49,10 @@ const Monitor = {
 						return m("div.output-modal", [
 							m("textarea", {
 								style: `
-									width: ${ MODEL.dimensions.width() * 40 }px;
-									height: ${ MODEL.dimensions.height() * 30 }px;
+									width: 320px;
+									height: 320px;
 								`,
 								oncreate: function (vnode){
-									console.log(e)
 									vnode.dom.select()
 								}
 							}, [
