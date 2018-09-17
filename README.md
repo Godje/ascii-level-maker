@@ -19,5 +19,6 @@ Making text-based levels graphically.
 - ~~Tiles creation~~
 - ~~Tiles editing~~
 - ~~Move session information in a single MODEL entry for export.~~
+- ~~Return output from filled starter data~~
 - Creating actual drawing for BRUSH tool.
 - Drawing while zoomed in

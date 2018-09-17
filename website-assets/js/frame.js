@@ -26,18 +26,7 @@ const MODEL = {
 	modalopen: m.stream(false),
 	modalcomponent: m.stream([]),
 	session: { //JSON will be exported
-		data: m.stream([
-			"----------",
-			"----------",
-			"----------",
-			"----------",
-			"----------",
-			"----------",
-			"----------",
-			"----------",
-			"----------",
-			"----------",
-		]),
+		data: m.stream([]),
 		output: m.stream(),
 		tiles: [ //Sample tiles. Testing purposes
 			{
@@ -91,7 +80,7 @@ const CTRL = {
 	fillData: function (){
 		MODEL.session.data(
 			new Array( MODEL.dimensions.height() ).fill(
-				new Array( MODEL.dimensions.height() ).fill(
+				new Array( MODEL.dimensions.width() ).fill(
 					MODEL.session.tiles[0]
 				)
 			)
@@ -114,6 +103,15 @@ const CTRL = {
 	},
 	redrawCanvas: function (){ //very fake, don't blame me, i suck. Change of width in stream will re-plant the canvas element and redraw
 		MODEL.toggleRedraw(true)
+	},
+	copy: function (o) {
+		var output, v, key;
+		output = Object.prototype.toString.call(o) !== '[object Object]' ? o:{}
+		for (key in o) {
+			v = o[key];
+			output[key] = (typeof v === "object") ? CTRL.copy(v) : v;
+		}
+		return output;
 	}
 }
 

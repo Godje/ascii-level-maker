@@ -7,14 +7,19 @@ const CTRL = frame.CTRL;
 module.exports = function (dom){
 	MODEL.toggleRedraw(false)
 	//REUSABLE FUNCTIONS
-	let createCanvas = function(){ return document.createElement("canvas") };
+	let createCanvas = function(w, h){ 
+		let el = document.createElement("canvas");
+		el.width = w;
+		el.height = h;
+		return el 
+	};
 
 	//CONSTANTS
 	const $ = dom.getContext("2d");
-	const image = createCanvas();
-	const image$ = image.getContext("2d");
 	const w = dom.width;
 	const h = dom.height;
+	const image = createCanvas(w, h);
+	const preview = createCanvas(w, h);
 
 	//VARIABLES
 	let drawing = false;
@@ -55,6 +60,7 @@ module.exports = function (dom){
 		}
 		drawing = true; 
 	};
+
 	function drawTiles(data, canvas){ 
 		let { defaultscale, zoom, dimensions } = MODEL;
 		let tilesize = defaultscale() * zoom();
@@ -85,8 +91,6 @@ module.exports = function (dom){
 
 	function setup(){
 		$.clearRect(0,0,w,h);
-		image.width = dom.width;
-		image.height = dom.height;
 		drawTiles(MODEL.session.data(), image)
 		redraw();
 	}
