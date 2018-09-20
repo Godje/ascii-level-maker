@@ -1,9 +1,10 @@
 const m = require("mithril");
 m.stream= require("mithril-stream");
 const frame = require("../frame.js");
+const CanvasControl = require("./Canvas.js");
+const Settings = require("./Settings.js");
 const MODEL = frame.MODEL;
 const CTRL = frame.CTRL;
-const CanvasControl = require("./Canvas.js");
 
 const Canvas = {
 	oncreate: function (vnode){
@@ -37,6 +38,10 @@ const CanvasMonitor = {
 			zoomInput: function (value){
 				if(value >= 1) MODEL.zoom( value );
 				else return;
+			},
+			openSettings: function (){
+				CTRL.openModal( Settings );
+				return;
 			}
 		};
 	},
@@ -71,6 +76,10 @@ const CanvasMonitor = {
 					onclick: CTRL.redrawCanvas,
 					title: "Redraw"
 				}, m("span.fas.fa-sync-alt")),
+				m("button", {
+					onclick: this.ctrl.openSettings,
+					title: "Settings"
+				}, m("span.fas.fa-cog"))
 			])
 		]);
 	}

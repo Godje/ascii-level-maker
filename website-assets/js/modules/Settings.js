@@ -65,21 +65,20 @@ const Settings = {
 	},
 	view: function(vnode){
 		let that = this;
-		return m("div", {
-			class: "settings "+(MODEL.menuopen() ? "open":"")
+		return m("div.settings-modal", {
 		}, [
-			m("div.wrapper", [
-				m("h1", "Settings"),
-				this.fields.map( function (fieldData){
-					return m(that.nodes.Field, fieldData)
-				} ),	
+				m("h2", "Settings"),
+				m("div.text-inputs", [
+					this.fields.map( function (fieldData){
+						return m(that.nodes.Field, fieldData)
+					} ),	
+				]),
+				m("div.buttons", [
+					m("button", {
+						onclick: this.ctrl.applySettings.bind(this),
+					}, "Apply")
+				]),
 				this.displayWarning ? m(this.nodes.Warning) : "",
-				m("input", {
-					type: "button",
-					onclick: this.ctrl.applySettings.bind(this),
-					value: "Apply"
-				})
-			])
 		])
 	}
 }
