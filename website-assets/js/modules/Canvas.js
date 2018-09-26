@@ -76,7 +76,7 @@ module.exports = function (dom){
 		}
 	};
 	function drawPreview(){ 
-		console.log("called drawPreview")
+		console.log("called drawPreview");
 	}
 	function drawGrid( ctx ){
 		let { defaultscale, dimensions, zoom } = MODEL;
