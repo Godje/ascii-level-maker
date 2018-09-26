@@ -35,6 +35,7 @@ module.exports = function (dom){
 		x: -1,
 		y: -1
 	};
+	let stoploop = false;
 
 	//PREFERENCES
 	const gridcolor = "lightgray";
@@ -59,6 +60,7 @@ module.exports = function (dom){
 			y: brushpos.y
 		}
 		drawing = true; 
+		tool = MODEL.currenttool();
 	};
 
 	function drawTiles(data, canvas){ 
@@ -73,9 +75,13 @@ module.exports = function (dom){
 			}
 		}
 	};
-	function drawGrid(){
+	function drawPreview(){ 
+		console.log("called drawPreview")
+	}
+	function drawGrid( ctx ){
 		let { defaultscale, dimensions, zoom } = MODEL;
 		let tilesize = defaultscale() * zoom();
+		let $ = ctx;
 		$.lineWidth = 1;
 		$.strokeStyle = gridcolor;
 		for(let x = 1; x < dimensions.width(); x++){
@@ -92,13 +98,24 @@ module.exports = function (dom){
 	function setup(){
 		$.clearRect(0,0,w,h);
 		drawTiles(MODEL.session.data(), image)
+		stoploop = true;
 		redraw();
 	}
 	function redraw(){
-		$.drawImage( image, 0, 0 )
-		drawGrid()
+		$.drawImage( image, 0, 0 );
+		$.drawImage( preview, 0, 0 );
+		drawGrid( $ );
+		stoploop = false;
+		loop();
 	}
+	function loop(){
+		//I honestly think this is ineffective and retarded, but I know nothing better
+		drawing ? drawPreview( tool, startpos, brushpos ) : void 0; 
 
+		//fake redraw stop. Quick fix. Better solutions will come later.
+		if(stoploop) return;
+		requestAnimationFrame(loop);
+	}
 	dom.addEventListener("mousemove", mousemove);
 	dom.addEventListener("mouseup", mouseup);
 	dom.addEventListener("mousedown", mousedown);

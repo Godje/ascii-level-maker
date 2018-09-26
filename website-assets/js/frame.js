@@ -103,19 +103,12 @@ const CTRL = {
 	},
 	redrawCanvas: function (){ //very fake, don't blame me, i suck. Change of width in stream will re-plant the canvas element and redraw
 		MODEL.toggleRedraw(true)
-	},
-	copy: function (o) {
-		var output, v, key;
-		output = Object.prototype.toString.call(o) !== '[object Object]' ? o:{}
-		for (key in o) {
-			v = o[key];
-			output[key] = (typeof v === "object") ? CTRL.copy(v) : v;
-		}
-		return output;
 	}
 }
 
+// filling up the Canvas with the data
 CTRL.fillData();
+
 module.exports = {
 	CTRL, MODEL
 };
