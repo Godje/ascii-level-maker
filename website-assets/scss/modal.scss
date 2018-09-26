@@ -36,7 +36,7 @@
 }
 
 //CREATE COMPONENT STYLES
-.create-tile, .edit-tile {
+.create-tile, .edit-tile, .settings-modal {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -124,6 +124,14 @@
 	}
 }
 
+.settings-modal {
+	width: 300px;
+	height:300px;
+}
+.settings-modal p.warning {
+	font-size: 12px;
+	color: darken(red, 10%)
+}
 .output-modal {
 	textarea {
 		width: 320px;
