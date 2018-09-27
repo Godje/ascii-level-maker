@@ -20,6 +20,6 @@ Making text-based levels graphically.
 - ~~Tiles editing~~
 - ~~Move session information in a single MODEL entry for export.~~
 - ~~Return output from filled starter data~~
-- Fix the **issue#6**
+- Fix the **[issue#6](https://github.com/Godje/ascii-level-maker/issues/6)**
 - Creating actual drawing for BRUSH tool.
 - Drawing while zoomed in
