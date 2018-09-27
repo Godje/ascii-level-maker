@@ -56,6 +56,8 @@ const MODEL = {
 }
 
 
+//assignment after defining
+MODEL.currenttile( MODEL.session.tiles[0] );
 MODEL.defaultscale = m.stream.combine( function ( width, height, zoom ){
 	let size = 600 / width();
 	return size;

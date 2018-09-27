@@ -5,7 +5,8 @@ const MODEL = frame.MODEL;
 const CTRL = frame.CTRL;
 
 module.exports = function (dom){
-	MODEL.toggleRedraw(false)
+	MODEL.toggleRedraw(false); //crutch
+
 	//REUSABLE FUNCTIONS
 	let createCanvas = function(w, h){ 
 		let el = document.createElement("canvas");
@@ -13,6 +14,14 @@ module.exports = function (dom){
 		el.height = h;
 		return el 
 	};
+	let resetPreview = function (){
+		let arr = new Array( MODEL.dimensions.height() ).fill();
+		arr=arr.map(function (el){
+			return new Array( MODEL.dimensions.width() ).fill();
+		});
+		previewData = arr;
+		drawPreview( previewData, preview )
+	}
 
 	//CONSTANTS
 	const $ = dom.getContext("2d");
@@ -20,6 +29,7 @@ module.exports = function (dom){
 	const h = dom.height;
 	const image = createCanvas(w, h);
 	const preview = createCanvas(w, h);
+
 
 	//VARIABLES
 	let drawing = false;
@@ -36,9 +46,12 @@ module.exports = function (dom){
 		y: -1
 	};
 	let stoploop = false;
+	let previewData = [];
 
 	//PREFERENCES
 	const gridcolor = "lightgray";
+
+	resetPreview();
 
 	//FUNCTIONS and PROCESS
 	function mousemove(e){ 
@@ -53,14 +66,11 @@ module.exports = function (dom){
 	};
 	function mouseup(e){ 
 		drawing = false; 
+		applyPreview();
 	};
 	function mousedown(e){ 
-		startpos = {
-			x: brushpos.x,
-			y: brushpos.y
-		}
+		Object.assign( startpos, brushpos );
 		drawing = true; 
-		tool = MODEL.currenttool();
 	};
 
 	function drawTiles(data, canvas){ 
@@ -75,8 +85,49 @@ module.exports = function (dom){
 			}
 		}
 	};
-	function drawPreview(){ 
-		console.log("called drawPreview");
+	function modifyPreview( tool, tile, startpos, brushpos ){ 
+		let zoom = MODEL.zoom;
+		let scale = MODEL.scale;
+
+		const applyBrush = function (){
+			let p$ = preview.getContext('2d');
+			previewData[ brushpos.y ][ brushpos.x ] = tile;
+		}
+		switch( tool ){
+			case "Brush": applyBrush();
+				break;
+		}
+		drawPreview( previewData, preview );
+	}
+	function drawPreview( data, canvas ){
+		let { defaultscale, zoom, dimensions } = MODEL;
+		let tilesize = defaultscale() * zoom();
+		for(let y = 0; y < data.length; y++){
+			for(let x = 0; x < data[y].length; x++){
+				let tile = data[y][x];
+				let $ = canvas.getContext('2d');
+				let color = 'rgba(0,0,0,0)';
+				tile == undefined ? void 0 : color = tile.color();
+				$.fillStyle = color;
+				$.fillRect(x * tilesize, y * tilesize, tilesize, tilesize)
+			}
+		}
+		$.drawImage( preview, 0, 0 );
+	}
+	function applyPreview(){
+		let data = MODEL.session.data;
+		let arr = data().map(function (row, y, arr){
+			return row.map(function (col, x, row){
+				let pdvalue = previewData[y][x];
+				let rvalue = (pdvalue != "undefined" && pdvalue != null) ? pdvalue : col;
+				return rvalue;
+			});
+		});
+		data(arr);
+		drawTiles( data(), image );
+		resetPreview();
+		clearCanvas( preview );
+		redraw();
 	}
 	function drawGrid( ctx ){
 		let { defaultscale, dimensions, zoom } = MODEL;
@@ -94,9 +145,11 @@ module.exports = function (dom){
 		}
 		$.stroke();
 	};
-
+	function clearCanvas( canvas ){
+		canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height)
+	}
 	function setup(){
-		$.clearRect(0,0,w,h);
+		clearCanvas(dom);
 		drawTiles(MODEL.session.data(), image)
 		stoploop = true;
 		redraw();
@@ -110,7 +163,7 @@ module.exports = function (dom){
 	}
 	function loop(){
 		//I honestly think this is ineffective and retarded, but I know nothing better
-		drawing ? drawPreview( tool, startpos, brushpos ) : void 0; 
+		drawing ? modifyPreview( MODEL.currenttool(), MODEL.currenttile(), startpos, brushpos ) : void 0; 
 
 		//fake redraw stop. Quick fix. Better solutions will come later.
 		if(stoploop) return;

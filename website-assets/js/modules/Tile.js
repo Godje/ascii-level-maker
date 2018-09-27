@@ -11,7 +11,7 @@ const Tile = {
 		this.selectTile = function (e){
 			let el = e.srcElement;
 			let id = el.dataset.id;
-			MODEL.currenttile(id);
+			MODEL.currenttile( vnode.attrs );
 			MODEL.session.tiles.forEach( (tile) => tile.selected(false) );
 			MODEL.session.tiles[ that.realIndex ].selected(true);
 			return;
