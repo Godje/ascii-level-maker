@@ -16,10 +16,6 @@ Making text-based levels graphically.
 	// open localhost:3000 by default
 
 ## TODO:
-- ~~Tiles creation~~
-- ~~Tiles editing~~
-- ~~Move session information in a single MODEL entry for export.~~
-- ~~Return output from filled starter data~~
 - Fix the **[issue#6](https://github.com/Godje/ascii-level-maker/issues/6)**
-- Creating actual drawing for BRUSH tool.
-- Drawing while zoomed in
+- Rewrite CTRL to populate an array in the argument, not the spec array.
+- Reset previewData to the size required on each resize of the canvas
