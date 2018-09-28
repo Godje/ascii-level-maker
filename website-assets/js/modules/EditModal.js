@@ -6,13 +6,14 @@ const CTRL = frame.CTRL;
 
 const EditModal = {
 	oninit: function (vnode){
-		let i = vnode.attrs.realIndex;
-		this.original = MODEL.session.tiles[i];
+		let i = vnode.attrs.id;
+		this.original = vnode.attrs.tile;
+		this.index = MODEL.session.tiles.indexOf( this.original );
 		this.fake = {
 			title: m.stream(this.original.title()),
 			symbol: m.stream(this.original.symbol()),
 			color: m.stream(this.original.color()),
-			selected: m.stream(false),
+			selected: m.stream(this.original.selected()),
 		}
 		this.acceptInput = ()=>{
 			if(this.fake.title().length > 0 && this.fake.symbol().length > 0) this.submitEdit();
@@ -23,7 +24,7 @@ const EditModal = {
 			CTRL.redrawCanvas()
 		}
 		this.deleteTile = function (){
-			MODEL.session.tiles.splice( i, 1 )
+			MODEL.session.tiles.splice( this.index, 1 );
 		}
 		return;
 	},

@@ -7,43 +7,50 @@ const EditModal = require("./EditModal.js");
 const Tile = {
 	oninit: function(vnode){
 		let that = this;
-		this.realIndex = MODEL.session.tiles.indexOf(vnode.attrs);
+		this.getOriginal = function (id){
+			return MODEL.session.tiles.filter(function (el){
+				return el.id() == id;
+			})[0];
+		};
+		this.original = this.getOriginal( vnode.attrs.id );
 		this.selectTile = function (e){
-			let el = e.srcElement;
-			let id = el.dataset.id;
-			MODEL.currenttile( vnode.attrs );
+			MODEL.currenttile( that.original );
 			MODEL.session.tiles.forEach( (tile) => tile.selected(false) );
-			MODEL.session.tiles[ that.realIndex ].selected(true);
-			return;
-		},
-			this.editTile = function(e){
-				let that = this;
-				const openModal = function (ch){
-					MODEL.modalopen(true);
-					MODEL.modalcomponent(ch);
-				}
-				openModal({
-					view: function (){
-						return m(EditModal, { realIndex: that.realIndex })
-					}
-				})
-				return;
+			that.original.selected(true);
+		};
+		this.editTile = function(e){
+			let that = this;
+			const openModal = function (ch){
+				MODEL.modalopen(true);
+				MODEL.modalcomponent(ch);
 			}
+			openModal({
+				view: function (vnode){
+					console.log(that.original)
+					return m(EditModal, { 
+						tile: that.original
+					})
+				}
+			})
+		}
+	},
+	onupdate: function (vnode){
+		this.original = this.getOriginal( vnode.attrs.id );
 	},
 	view: function(vnode){
 		return m("div", {
-			class: "tile "+ (vnode.attrs.selected() ? "selected":""),
+			class: "tile "+ (this.original.selected() ? "selected":""),
 			onclick: this.selectTile,
-			"data-id": vnode.attrs.id()
 		}, [
 			m("div.color", {
-				style: "background-color: "+vnode.attrs.color()
+				style: "background-color: "+this.original.color()
 			}),
-			m("div.title", vnode.attrs.title()),
+			m("div.title", this.original.title()),
 			m("div.info", [
-				m("span.symbol", vnode.attrs.symbol()),
+				m("span.symbol", this.original.symbol()),
 				m("span.edit-button", {
-					onclick: this.editTile.bind(this)
+					onclick: this.editTile.bind(this),
+					"data-id": this.original.id()
 				}, "Edit")
 			])
 		]);

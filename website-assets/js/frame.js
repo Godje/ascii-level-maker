@@ -21,7 +21,7 @@ const MODEL = {
 	menuopen: m.stream(false),
 	toolsopen: m.stream(true),
 	currenttool: m.stream("Brush"),
-	tools: [ "Brush", "Eraser", "Line", "Square" ],
+	tools: [ "Brush", "Line", "Square" ],
 	currenttile: m.stream(1),
 	modalopen: m.stream(false),
 	modalcomponent: m.stream([]),
@@ -30,25 +30,25 @@ const MODEL = {
 		output: m.stream(),
 		tiles: [ //Sample tiles. Testing purposes
 			{
-				id: m.stream(tileid(tileid()+1)),
+				id: m.stream( tileid(tileid()+1) ),
 				title: m.stream("Air"),
 				color: m.stream("#aa3333"),
 				symbol: m.stream("-"),
-				selected: m.stream(false)
+				selected: m.stream(true)
 			},
 			{
-				id: m.stream(tileid(tileid()+1)),
+				id: m.stream( tileid(tileid()+1) ),
 				title: m.stream("Stone"),
 				color: m.stream("#999999"),
 				symbol: m.stream("o"),
 				selected: m.stream(false)
 			},
 			{
-				id: m.stream(tileid(tileid()+1)),
+				id: m.stream( tileid(tileid()+1) ),
 				title: m.stream("Grass"),
 				color: m.stream("#99ff99"),
 				symbol: m.stream("="),
-				selected: m.stream(true)
+				selected: m.stream(false)
 			},
 		],
 	},

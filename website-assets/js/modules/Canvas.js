@@ -61,8 +61,8 @@ module.exports = function (dom){
 			y: e.offsetY
 		}
 		Object.assign( mousepos, coords );
-		brushpos.x = Math.floor( coords.x / MODEL.defaultscale() );
-		brushpos.y = Math.floor( coords.y / MODEL.defaultscale() );
+		brushpos.x = Math.floor( coords.x / MODEL.defaultscale() / MODEL.zoom() );
+		brushpos.y = Math.floor( coords.y / MODEL.defaultscale() / MODEL.zoom() );
 	};
 	function mouseup(e){ 
 		drawing = false; 
