@@ -4,7 +4,7 @@
   "description": "Making creation of levels with ASCII arrays easier :)",
   "main": "index.js",
   "scripts": {
-		"watch": "gulp watch"
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -37,5 +37,6 @@
     "mithril": "^1.1.6",
     "mithril-stream": "^1.1.0",
     "vinyl-source-stream": "^2.0.0"
-  }
+  },
+  "dependencies": {}
 }

@@ -38,6 +38,7 @@ const Tile = {
 		this.original = this.getOriginal( vnode.attrs.id );
 	},
 	view: function(vnode){
+		this.original = this.getOriginal( vnode.attrs.id );
 		return m("div", {
 			class: "tile "+ (this.original.selected() ? "selected":""),
 			onclick: this.selectTile,
