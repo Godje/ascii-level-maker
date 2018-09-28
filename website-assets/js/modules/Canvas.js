@@ -90,12 +90,24 @@ module.exports = function (dom){
 		let scale = MODEL.scale;
 
 		const applyBrush = function (){
-			let p$ = preview.getContext('2d');
 			previewData[ brushpos.y ][ brushpos.x ] = tile;
+		}
+		const applySquare = function (){
+			resetPreview();
+			clearCanvas( preview );
+			for(let y = startpos.y; y <= brushpos.y; y++){
+				for(let x = startpos.x; x <= brushpos.x; x++){
+					if(y == startpos.y || y == brushpos.y)
+						previewData[y][x] = tile;
+					if(x == startpos.x || x == brushpos.x)
+						previewData[y][x] = tile;
+				}
+			}
 		}
 		switch( tool ){
 			case "Brush": applyBrush();
 				break;
+			case "Square": applySquare();
 		}
 		drawPreview( previewData, preview );
 	}
@@ -112,7 +124,9 @@ module.exports = function (dom){
 				$.fillRect(x * tilesize, y * tilesize, tilesize, tilesize)
 			}
 		}
+		$.drawImage( image, 0, 0 );
 		$.drawImage( preview, 0, 0 );
+		drawGrid( $ );
 	}
 	function applyPreview(){
 		let data = MODEL.session.data;
