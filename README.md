@@ -12,7 +12,7 @@ Making text-based levels graphically.
 
 	clone the repository
 	npm install
-	npm run watch
+	npm run start
 	// open localhost:3000 by default
 
 ## TODO:

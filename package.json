@@ -4,7 +4,7 @@
   "description": "Making creation of levels with ASCII arrays easier :)",
   "main": "index.js",
   "scripts": {
-    "watch": "gulp watch"
+    "start": "gulp watch"
   },
   "repository": {
     "type": "git",

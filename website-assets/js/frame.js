@@ -32,8 +32,8 @@ const MODEL = {
 			{
 				id: m.stream( tileid(tileid()+1) ),
 				title: m.stream("Air"),
-				color: m.stream("#aa3333"),
-				symbol: m.stream("-"),
+				color: m.stream("rgba(255,255,255,0)"),
+				symbol: m.stream(" "),
 				selected: m.stream(true)
 			},
 			{

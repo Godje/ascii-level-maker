@@ -16,7 +16,7 @@ module.exports = function (dom){
 	};
 	let resetPreview = function (){
 		let arr = new Array( MODEL.dimensions.height() ).fill();
-		arr=arr.map(function (el){
+		arr = arr.map(function (el){
 			return new Array( MODEL.dimensions.width() ).fill();
 		});
 		previewData = arr;
