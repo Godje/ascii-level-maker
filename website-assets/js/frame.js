@@ -9,6 +9,10 @@ const MODEL = {
 		width: m.stream(10),
 		height: m.stream(10)
 	},
+	canvasposition: {
+		x: 0,
+		y: 0,
+	},
 	scroll: {
 		x: m.stream(0),
 		y: m.stream(0),
@@ -26,7 +30,7 @@ const MODEL = {
 	modalopen: m.stream(false),
 	modalcomponent: m.stream([]),
 	session: { //JSON will be exported
-		data: m.stream([]),
+		data: [],
 		output: m.stream(),
 		tiles: [ //Sample tiles. Testing purposes
 			{
@@ -79,37 +83,10 @@ const CTRL = {
 		MODEL.modalopen(true);
 		MODEL.modalcomponent(ch);
 	},
-	fillData: function (){
-		MODEL.session.data(
-			new Array( MODEL.dimensions.height() ).fill(
-				new Array( MODEL.dimensions.width() ).fill(
-					MODEL.session.tiles[0]
-				)
-			)
-		)
-	},
-	refillData: function (){
-		let data = MODEL.session.data();
-		for(let y = 0; y < MODEL.dimensions.height(); y++){
-			if(data[y] == null){
-				data.push( new Array(MODEL.dimensions.width()).fill( MODEL.session.tiles[0] ) );
-			}
-		}
-		for(let y = 0; y < MODEL.dimensions.height(); y++){
-			for(let x = 0; x < MODEL.dimensions.width(); x++){
-				if(data[y][x] == null ){
-					data[y][x] = MODEL.session.tiles[0];
-				}
-			}
-		}
-	},
-	redrawCanvas: function (){ //very fake, don't blame me, i suck. Change of width in stream will re-plant the canvas element and redraw
-		MODEL.toggleRedraw(true)
+	redrawCanvas: function (){ 
+		MODEL.toggleRedraw(true);
 	}
 }
-
-// filling up the Canvas with the data
-CTRL.fillData();
 
 module.exports = {
 	CTRL, MODEL
