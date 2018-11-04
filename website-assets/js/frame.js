@@ -64,20 +64,25 @@ const MODEL = {
 MODEL.currenttile( MODEL.session.tiles[0] );
 MODEL.defaultscale = m.stream.combine( function ( width, height, zoom ){
 	let size = 600 / width();
+	console.log(size)
 	return size;
 }, [ MODEL.dimensions.width, MODEL.dimensions.height, MODEL.zoom] );
 
-const minzoom = 0.99;
+const minzoom = 1;
 const zoomstep = 0.25;
 
 const CTRL = {
+	setZoom: function(v){
+		if(v >= minzoom) MODEL.zoom( v );
+		return;
+	},
 	zoomIn: function (){
 		let futurezoom = MODEL.zoom() + zoomstep;
-		futurezoom > minzoom ? MODEL.zoom( futurezoom ) : void 0;
+		futurezoom >= minzoom ? CTRL.setZoom( futurezoom ) : void 0;
 	},
 	zoomOut: function (){
 		let futurezoom = MODEL.zoom() - zoomstep;
-		futurezoom > minzoom ? MODEL.zoom( futurezoom ) : void 0;
+		futurezoom >= minzoom ? CTRL.setZoom( futurezoom ) : void 0;
 	},
 	openModal: function (ch){
 		MODEL.modalopen(true);

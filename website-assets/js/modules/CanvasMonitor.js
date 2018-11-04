@@ -36,7 +36,6 @@ const CanvasMonitor = {
 				MODEL.scroll.y( e.target.scrollTop );
 			},
 			zoomInput: function (value){
-				if(value >= 1) MODEL.zoom( value );
 				else return;
 			},
 			openSettings: function (){
@@ -51,8 +50,8 @@ const CanvasMonitor = {
 			onscroll: this.ctrl.scroll.bind(this)
 		}, [
 			m(Canvas, {
-				width: MODEL.dimensions.width() * MODEL.defaultscale() * MODEL.zoom(),
-				height: MODEL.dimensions.height() * MODEL.defaultscale() * MODEL.zoom(),
+				width: MODEL.dimensions.width() * MODEL.defaultscale(),
+				height: MODEL.dimensions.height() * MODEL.defaultscale(),
 				toggleRedraw: MODEL.toggleRedraw()
 			}),
 			m("div.control-bar", [

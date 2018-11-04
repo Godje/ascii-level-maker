@@ -11,8 +11,6 @@ let createCanvas = function(w, h){
 	return el;
 }
 
-const maxResolution = 20;
-
 const canvases = {
 	realcanvas: null,
 	image: null,
@@ -23,12 +21,14 @@ module.exports = function (dom){
 	MODEL.toggleRedraw(false); //crutch
 
 	canvases.realcanvas = dom;
-	canvases.image = createCanvas();
+	canvases.image = createCanvas(
+		m.stream.combine(  ),
+		MODEL.dimensions.width, MODEL.defaultscale, MODEL.zoom,
+		MODEL.dimensions.height() * MODEL.defaultscale() * MODEL.zoom(),
+	);
+	canvases.preview = createCanvas( dom.width, dom.height );
 
 	function draw(){
-
-	}
-	function render(){
 
 	}
 }
