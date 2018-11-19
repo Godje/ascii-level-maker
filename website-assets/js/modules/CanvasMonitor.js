@@ -36,7 +36,7 @@ const CanvasMonitor = {
 				MODEL.scroll.y( e.target.scrollTop );
 			},
 			zoomInput: function (value){
-				else return;
+
 			},
 			openSettings: function (){
 				CTRL.openModal( Settings );

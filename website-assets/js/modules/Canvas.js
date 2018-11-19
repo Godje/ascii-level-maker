@@ -26,9 +26,18 @@ module.exports = function (dom){
 		MODEL.dimensions.width, MODEL.defaultscale, MODEL.zoom,
 		MODEL.dimensions.height() * MODEL.defaultscale() * MODEL.zoom(),
 	);
+	
+	// ***
+	// SUDO CODE
+	// ***
+	//
+	// CREATE core canvas
+	// CREATE a full image canvas.
+	// 	Only part of it will be displayed, according to Zoom, X, and Y, coordinates
+	// CREATE a preview canvas.
+	// 		draw on preview canvas only before applying to a normal canvas. Do not update a normal canvas. Update the preview canvas separately.
+	// All of the updates will draw on a single canvas that is the CORE canvas.
+
 	canvases.preview = createCanvas( dom.width, dom.height );
 
-	function draw(){
-
-	}
 }
