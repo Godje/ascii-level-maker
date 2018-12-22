@@ -1,3 +1,4 @@
+// BASIC IMPORTS
 const m = require("mithril");
 m.stream= require("mithril-stream");
 const frame = require("../frame.js");
@@ -6,8 +7,10 @@ const Settings = require("./Settings.js");
 const MODEL = frame.MODEL;
 const CTRL = frame.CTRL;
 
+// Canvas DOM as a component
 const Canvas = {
 	oncreate: function (vnode){
+		// calling the main function that will render the images
 		CanvasControl( vnode.dom )
 	},
 	onupdate: function (vnode){
@@ -28,6 +31,7 @@ const Canvas = {
 	},
 }
 
+// Container for Canvas and its controls
 const CanvasMonitor = {
 	oninit: function (vnode){
 		this.ctrl = {
