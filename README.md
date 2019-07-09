@@ -1,3 +1,5 @@
+## Archived because I no longer work on it.
+
 # ascii-level-maker
 
 Making text-based levels graphically.
